@@ -1,16 +1,16 @@
 class Api::V1::JourneysController < ApplicationController
       def create
-         @journey = Journey.create(journey_params)
-         user = @current_user
-         @journey.update(user: user)
-      if @journey.valid?
-         render json: @journey
-      else
-         render json: {errors: journey.errors.full_messages}, status: :not_accepted
+           @journey = Journey.create(journey_params)
+           user = @current_user
+           @journey.update(user: user)
+        if @journey.valid?
+           render json: @journey
+        else
+           render json: {errors: journey.errors.full_messages}, status: :not_accepted
+        end
       end
-   end
 
-   def index 
+   def index
       @journeys = Journey.all
       render json: @journeys
    end
