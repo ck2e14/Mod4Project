@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
-import { 
+import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
   Link,
-  useHistory 
+  useHistory
 } from "react-router-dom";
 import Signup from "./Signup"
 

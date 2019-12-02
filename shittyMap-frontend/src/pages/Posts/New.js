@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
-import Map from './Map.js'
+import MapContainer from './MapContainer.js'
 import { useHistory } from "react-router-dom";
 
 const NewPost = props => {
@@ -18,7 +18,7 @@ const NewPost = props => {
   // };
   return (
     <div className='map-div'>
-      <Map />
+      <MapContainer />
     </div>
   );
 };
