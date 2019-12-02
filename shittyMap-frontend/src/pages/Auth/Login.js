@@ -19,7 +19,7 @@ const Login = props => {
       .catch(errors => {
         setErrors(errors);
         console.error(errors);
-        
+
       });
   };
   return (
@@ -30,9 +30,9 @@ const Login = props => {
           <i className="lock icon"></i>
           <div className="content">
             <div className="header">
-              Login failed!
+              {!errors ? 'Login failed!' : null}
             </div>
-            <p>You might have misspelled your username or password!</p>
+            <p>{errors ? 'Enter your username and password to login.' : null}</p>
           </div>
         </div>
       <div className="ui fluid card">
