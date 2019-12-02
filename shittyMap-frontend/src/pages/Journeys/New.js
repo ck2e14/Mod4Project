@@ -4,9 +4,7 @@ import MapContainer from './Map.js'
 import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
-
-
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 export default class NewJourney extends Component {
 
@@ -18,23 +16,10 @@ export default class NewJourney extends Component {
     // history: useHistory()
   }
 
-  // const [title, setStartpoint] = useState("");
-  // const [content, setEndpoint] = useState("");
-  // const history = useHistory();
-  //
    handleSubmit = (origin, destination) => {
-    console.log(origin)
+    console.log(origin, destination)
   };
 
-
- //  handleSubmit = (origin, destination) => {
- //   console.log(origin)
- //   // API.postJourney({ this.state.title, this.state.content }).then(journey => {
- //   //   history.push(`/journey/${journey.id}`);
- //   // });
- //   // setStartpoint("");
- //   // setEndpoint("");
- // };
 
   render(){
   return (
@@ -48,8 +33,13 @@ export default class NewJourney extends Component {
                 </div>
                 <div className="five wide column">
                 <JourneyInformation />
+
                 </div>
-                <ExtraInformation />
+                <div className="ui row">
+                  <div className="eleven wide column">
+                  <ExtraInformation />
+                </div>
+                </div>
                 </div>
                 {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null }
               </div>
