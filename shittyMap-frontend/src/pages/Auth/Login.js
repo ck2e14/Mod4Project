@@ -28,31 +28,52 @@ const Login = props => {
       .catch(errors => {
         setErrors(errors);
         console.error(errors);
-        
+
       });
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {errors.join()}
-        <input
-          type="text"
-          placeholder="UserName"
-          name="username"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <input type="submit" />
-      </form>
-      <Link to="/auth/signup">Register Here</Link>
+    <div className="page-login">
+  <div className="ui centered grid container">
+    <div className="nine wide column">
+      <div className="ui icon warning message">
+          <i className="lock icon"></i>
+          <div className="content">
+            <div className="header">
+              {!errors ? 'Login failed!' : null}
+            </div>
+            <p>{errors ? 'Enter your username and password to login.' : null}</p>
+          </div>
+        </div>
+      <div className="ui fluid card">
+        <div className="content">
+          <form onSubmit={handleSubmit} className="ui form">
+            <div className="field">
+            {errors.join()}
+            <input
+              type="text"
+              placeholder="UserName"
+              name="username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+          <div className="field">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+        </div>
+            <input type="submit" />
+            </div>
+          </form>
+        </div>
+        <Link to="/auth/signup">Register Here</Link>
+      </div>
     </div>
+  </div>
+</div>
   );
 };
 

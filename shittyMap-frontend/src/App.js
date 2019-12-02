@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import "./App";
 
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup"
