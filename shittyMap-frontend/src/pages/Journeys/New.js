@@ -41,6 +41,7 @@ export default class NewJourney extends Component {
     <div className='ui container'>
           <SearchBar handleSubmit={this.handleSubmit}/>
             <div className='ui celled grid'>
+
               <div className='ui row'>
               <div className="eleven wide column">
                 <MapContainer />
@@ -50,6 +51,7 @@ export default class NewJourney extends Component {
                 </div>
                 <ExtraInformation />
                 </div>
+                {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null }
               </div>
         </div>
   );

@@ -65,7 +65,7 @@ const Login = props => {
               onChange={e => setPassword(e.target.value)}
             />
         </div>
-            <input type="submit" />
+            <input type="submit" value="Log In"/>
             </div>
           </form>
         </div>
