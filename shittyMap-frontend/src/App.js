@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import "./App";
 
 import { Route, Redirect } from "react-router-dom";
 import Auth from "./pages/Auth";
