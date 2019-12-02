@@ -36,16 +36,17 @@ export default class NewJourney extends Component {
   return (
     <div className='ui container'>
           <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui grid'>
+            <div className='ui grid'> 
               <div className='ui row'>
               <div className="eleven wide column">
                 <Map />
                 </div>
                 <div className="five wide column">
                 <JourneyInformation />
-                </div>
+                </div>  
                 <ExtraInformation />
                 </div>
+                {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null }
               </div>
         </div>
   );
