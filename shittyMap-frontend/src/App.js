@@ -40,6 +40,7 @@ function App({ history }) {
       ) : (
         <Redirect to={paths.LOGIN} />
       )}
+      
       {user && <button onClick={logout}>log out</button>}
 
     </div>
