@@ -31,6 +31,7 @@ const signup = userDetails =>
     .then(jsonify)
     .then(data => {
       localStorage.setItem("token", data.token);
+      return data.user  
     });
 // **************************************************************************************
 
