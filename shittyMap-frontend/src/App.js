@@ -6,7 +6,7 @@ import { Route, Redirect } from "react-router-dom";
 import Auth from "./pages/Auth";
 import paths from "./paths";
 import API from "./adapters/API";
-import NewPost from "./pages/Posts/New";
+import NewJourney from "./pages/Journeys/New";
 
 function App({ history }) {
   const [user, setUser] = useState(null);
@@ -15,7 +15,7 @@ function App({ history }) {
     API.validate()
       .then(user => {
         setUser(user);
-        history.push(paths.NEW_POST);
+        history.push(paths.NEW_JOURNEY);
       })
       .catch(() => {
         history.push(paths.LOGIN);
@@ -36,7 +36,7 @@ function App({ history }) {
       />
       {user ? (
         <>
-          <Route path="/posts/new" render={routerProps => <NewPost />} />
+          <Route path="/journeys/new" render={routerProps => <NewJourney />} />
         </>
       ) : (
         <Redirect to={paths.LOGIN} />

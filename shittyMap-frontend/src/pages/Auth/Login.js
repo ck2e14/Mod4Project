@@ -14,16 +14,17 @@ const Login = props => {
       .then(user => {
         console.log(user);
         props.setUser(user);
-        history.push("/posts/new");
+        history.push("/journeys/new");
       })
       .catch(errors => {
         console.error(errors);
         setErrors(errors);
+        
       });
   };
   return (
     <form onSubmit={handleSubmit}>
-      {errors.join()}
+      {errors ? errors.join() : 'Yes'}
       <input
         type="text"
         placeholder="UserName"
