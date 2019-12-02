@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
-import { useHistory } from "react-router-dom";
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link,
+  useHistory 
+} from "react-router-dom";
+import Signup from "./Signup"
+
 
 const Login = props => {
   const [username, setUsername] = useState("");
@@ -23,24 +32,27 @@ const Login = props => {
       });
   };
   return (
-    <form onSubmit={handleSubmit}>
-      {errors.join()}
-      <input
-        type="text"
-        placeholder="UserName"
-        name="username"
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <input type="submit" />
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        {errors.join()}
+        <input
+          type="text"
+          placeholder="UserName"
+          name="username"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <input type="submit" />
+      </form>
+      <Link to="/auth/signup">Register Here</Link>
+    </div>
   );
 };
 
