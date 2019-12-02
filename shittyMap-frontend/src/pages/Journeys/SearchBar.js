@@ -15,15 +15,16 @@ class SearchBar extends React.Component{
   }
 
 
-  onformSubmit = (event) =>{
-    event.preventDefault()
-    this.props.handleSubmit(this.state.term)
+  onformSubmit = (e) =>{
+    e.preventDefault()
+    console.log(e.target.value)
+    // this.props.handleSubmit(this.state.term)
   }
 
   render(){
     return(
       <div className='search-bar ui segment'>
-        <form className='ui form' onSubmit={this.handleSubmit}>
+        <form className='ui form' onSubmit={(e) => this.onformSubmit(e)}>
           <div className='field'>
             <label>Plan your journey!</label>
               <input
@@ -36,6 +37,7 @@ class SearchBar extends React.Component{
                   value={this.state.destination}
                   onChange={this.onDestinationChange}
                   />
+                <input type="submit" />
           </div>
         </form>
       </div>

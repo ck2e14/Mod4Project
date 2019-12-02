@@ -34,23 +34,15 @@ function App() {
 
   return (
     <div className="App">
-
       <Switch>
         <Route path='/wololo' component={() => <h1>WOLOLOOO <Link to='/auth/signup'>SIGNUP</Link></h1>}/>
         <Route path="/auth/login" component={props => <Login {...props} setUser={setUser} />} />
         <Route path="/auth/signup" component={Signup} />
         <Route path="/journeys/new" render={routerProps => <NewJourney />} />
         {user && <button onClick={logout}>log out</button>} */}
-        </Switch>
+      </Switch>
     </div>
   );
 }
 
 export default App;
-
-      // {/* {user ? ( */}
-      //   {/* <> */}
-      //   {/* </>
-      // ) : ( */}
-      //   {/* <Redirect to={paths.LOGIN} /> */}
-      //   )}

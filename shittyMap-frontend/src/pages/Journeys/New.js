@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../adapters/API";
-import Map from './Map.js'
+import MapContainer from './Map.js'
 import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
@@ -22,9 +22,8 @@ export default class NewJourney extends Component {
   // const [content, setEndpoint] = useState("");
   // const history = useHistory();
   //
-   handleSubmit = e => {
-    e.preventDefault();
-    console.log(e)
+   handleSubmit = (origin, destination) => {
+    console.log(origin, destination)
     // API.postJourney({ this.state.title, this.state.content }).then(journey => {
     //   history.push(`/journey/${journey.id}`);
     // });
@@ -39,7 +38,7 @@ export default class NewJourney extends Component {
             <div className='ui grid'>
               <div className='ui row'>
               <div className="eleven wide column">
-                <Map />
+                <MapContainer />
                 </div>
                 <div className="five wide column">
                 <JourneyInformation />
