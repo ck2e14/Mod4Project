@@ -1,4 +1,5 @@
 export default {
   NEW_POST: "/posts/new",
-  LOGIN: "/auth/login"
+  LOGIN: "/auth/login",
+  SIGNUP: "/auth/signup"
 };
