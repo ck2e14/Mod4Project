@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
-import { 
+import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
   Link,
-  useHistory 
+  useHistory
 } from "react-router-dom";
 import Signup from "./Signup"
 
@@ -65,7 +65,7 @@ const Login = props => {
               onChange={e => setPassword(e.target.value)}
             />
         </div>
-            <input type="submit" />
+            <input type="submit" value="Log In"/>
             </div>
           </form>
         </div>
