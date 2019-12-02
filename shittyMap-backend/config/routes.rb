@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         resources :users
         resources :journeys
         post "/login", to: "users#login"
+        post "/signup", to: "users#create"    
         get "/validate", to: "users#validate"
     end
   end

@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import "./App";
 
-import { Route, Redirect } from "react-router-dom";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup"
+
+
+import { Route, Redirect, Switch, useHistory, Link } from "react-router-dom";
 import Auth from "./pages/Auth";
 import paths from "./paths";
 import API from "./adapters/API";
-import NewPost from "./pages/Posts/New";
+import NewJourney from "./pages/Journeys/New";
 
-function App({ history }) {
+function App() {
   const [user, setUser] = useState(null);
+  const history = useHistory()
 
   useEffect(() => {
     API.validate()
       .then(user => {
         setUser(user);
-        history.push(paths.NEW_POST);
+        history.push(paths.NEW_JOURNEY);
       })
       .catch(() => {
         history.push(paths.LOGIN);
@@ -30,21 +34,23 @@ function App({ history }) {
 
   return (
     <div className="App">
-      <Route
-        path="/auth"
-        render={routerProps => <Auth {...routerProps} setUser={setUser} />}
-      />
-      {user ? (
-        <>
-          <Route path="/posts/new" render={routerProps => <NewPost />} />
-        </>
-      ) : (
-        <Redirect to={paths.LOGIN} />
-      )}
-      {user && <button onClick={logout}>log out</button>}
 
+      <Switch>
+        <Route path='/wololo' component={() => <h1>WOLOLOOO <Link to='/auth/signup'>SIGNUP</Link></h1>}/>
+        <Route path="/auth/login" component={props => <Login {...props} setUser={setUser} />} />
+        <Route path="/auth/signup" component={Signup} />
+        <Route path="/journeys/new" render={routerProps => <NewJourney />} />
+        {user && <button onClick={logout}>log out</button>} */}
+        </Switch>
     </div>
   );
 }
 
 export default App;
+
+      // {/* {user ? ( */}
+      //   {/* <> */}
+      //   {/* </>
+      // ) : ( */}
+      //   {/* <Redirect to={paths.LOGIN} /> */}
+      //   )}

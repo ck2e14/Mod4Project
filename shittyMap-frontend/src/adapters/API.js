@@ -2,11 +2,11 @@ const API_ENDPOINT = "http://localhost:3000/api/v1/";
 const LOGIN_URL = `${API_ENDPOINT}login`;
 const VALIDATE_URL = `${API_ENDPOINT}validate`;
 const SIGNUP_URL = `${API_ENDPOINT}users`;
-const POSTS_URL = `${API_ENDPOINT}posts`;
-const POST_URL = post => `${API_ENDPOINT}posts/${post.id}`;
+const JOURNEYS_URL = `${API_ENDPOINT}journeys`;
+const JOURNEY_URL = journey => `${API_ENDPOINT}journeys/${journey.id}`;
 
 const jsonify = res => {
-  if (!res.ok) throw res;
+  // if (!res.ok) throw res;
   return res.json().then(data => {
     if (data.errors) throw data.errors;
     else return data;
@@ -16,6 +16,23 @@ const jsonify = res => {
 // const authHeader = () => {
 //     Authorisation: localStorage.token
 // }
+
+
+// ************************************TO BE SORTED OUT (CWK)****************************
+const signup = userDetails =>
+  fetch(SIGNUP_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({ user: userDetails })
+  })
+    .then(jsonify)
+    .then(data => {
+      localStorage.setItem("token", data.token);
+    });
+// **************************************************************************************
 
 const login = userDetails =>
   fetch(LOGIN_URL, {
@@ -44,15 +61,16 @@ const validate = () =>
       localStorage.setItem("token", data.token);
       return data.user;
     });
-const postPost = post =>
-  fetch(POSTS_URL, {
+
+const postJourney = journey =>
+  fetch(JOURNEYS_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
       Authorisation: localStorage.getItem("token")
     },
-    body: JSON.stringify({ post })
+    body: JSON.stringify({ journey })
   }).then(jsonify);
 
 const logout = () => {
@@ -61,7 +79,8 @@ const logout = () => {
 
 export default {
   login,
+  signup,
   validate,
-  postPost,
+  postJourney,
   logout
 };
