@@ -17,6 +17,23 @@ const jsonify = res => {
 //     Authorisation: localStorage.token
 // }
 
+
+// ************************************TO BE SORTED OUT (CWK)****************************
+const signup = userDetails =>
+  fetch(SIGNUP_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({ user: userDetails })
+  })
+    .then(jsonify)
+    .then(data => {
+      localStorage.setItem("token", data.token);
+    });
+// **************************************************************************************
+
 const login = userDetails =>
   fetch(LOGIN_URL, {
     method: "POST",
@@ -44,6 +61,7 @@ const validate = () =>
       localStorage.setItem("token", data.token);
       return data.user;
     });
+
 const postJourney = journey =>
   fetch(JOURNEYS_URL, {
     method: "POST",
@@ -61,6 +79,7 @@ const logout = () => {
 
 export default {
   login,
+  signup,
   validate,
   postJourney,
   logout

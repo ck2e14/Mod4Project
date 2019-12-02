@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
-import { useHistory } from "react-router-dom";
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link,
+  useHistory 
+} from "react-router-dom";
+import Signup from "./Signup"
+
 
 const Login = props => {
   const [username, setUsername] = useState("");
@@ -60,11 +69,11 @@ const Login = props => {
             </div>
           </form>
         </div>
+        <Link to="/auth/signup">Register Here</Link>
       </div>
     </div>
   </div>
 </div>
-
   );
 };
 
