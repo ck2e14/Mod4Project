@@ -8,17 +8,18 @@ class SearchBar extends React.Component{
 
   onOriginChange = (event) =>{
     this.setState({origin: event.target.value})
+    console.log(this.state.origin)
 
   }
   onDestinationChange = (event) =>{
     this.setState({destination: event.target.value})
+    console.log(this.state.destination)
   }
 
 
   onformSubmit = (e) =>{
-    e.preventDefault()
-    console.log(e.target.value)
-    // this.props.handleSubmit(this.state.term)
+   e.preventDefault()
+   this.props.handleSubmit(this.state.origin, this.state.destination)
   }
 
   render(){

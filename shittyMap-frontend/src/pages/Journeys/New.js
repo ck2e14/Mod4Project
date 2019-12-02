@@ -23,19 +23,24 @@ export default class NewJourney extends Component {
   // const history = useHistory();
   //
    handleSubmit = (origin, destination) => {
-    console.log(origin, destination)
-    // API.postJourney({ this.state.title, this.state.content }).then(journey => {
-    //   history.push(`/journey/${journey.id}`);
-    // });
-    // setStartpoint("");
-    // setEndpoint("");
+    console.log(origin)
   };
+
+
+ //  handleSubmit = (origin, destination) => {
+ //   console.log(origin)
+ //   // API.postJourney({ this.state.title, this.state.content }).then(journey => {
+ //   //   history.push(`/journey/${journey.id}`);
+ //   // });
+ //   // setStartpoint("");
+ //   // setEndpoint("");
+ // };
 
   render(){
   return (
     <div className='ui container'>
           <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui grid'>
+            <div className='ui celled grid'>
               <div className='ui row'>
               <div className="eleven wide column">
                 <MapContainer />
