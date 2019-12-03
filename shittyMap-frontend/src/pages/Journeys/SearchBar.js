@@ -17,15 +17,18 @@ class SearchBar extends React.Component{
   }
 
 
-  onformSubmit = (e) =>{
-   e.preventDefault()
-   this.props.handleSubmit(this.state.origin, this.state.destination)
-  }
+  // onformSubmit = (e) =>{
+  //  e.preventDefault()
+  //  fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${this.state.origin}&destination=${this.state.destination}&key=IzaSyA4KsBwrhZbB_bnjtmZi1x67YTMMWmtQuU`)
+  //     .then(res => res.json())
+  //     .then(thing => console.log(thing))
+  // //  this.props.handleSubmit(this.state.origin, this.state.destination)
+  // }
 
   render(){
     return(
       <div className='search-bar ui segment'>
-        <form className='ui form' onSubmit={(e) => this.onformSubmit(e)}>
+        <form className='ui form' onSubmit={(e) => this.props.handleSubmit(e, this.state.origin, this.state.destination)}>
           <div className='field'>
             <label>Plan your journey!</label>
               <input
