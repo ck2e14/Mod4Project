@@ -3,6 +3,8 @@ import "./App";
 
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup"
+import Navbar from "./pages/Navbar/Navbar"
+import UserDash from "./pages/Dashboard/UserDash"
 
 
 import { Route, Redirect, Switch, useHistory, Link } from "react-router-dom";
@@ -34,13 +36,16 @@ function App() {
 
   return (
     <div className="App">
+      {user && <Navbar/>}
+      <br></br>
       <Switch>
-        <Route path='/wololo' component={() => <h1>WOLOLOOO <Link to='/auth/signup'>SIGNUP</Link></h1>}/>
+        <Route exact path='/' component={props => <Login {...props} setUser={setUser}/>} />
         <Route path="/auth/login" component={props => <Login {...props} setUser={setUser} />} />
-
         <Route path="/auth/signup" component={props => <Signup {...props} setUser={setUser}/>} />
         <Route path="/journeys/new" render={routerProps => <NewJourney logout={logout} user={user}/>} />
+        <Route exact path="/dashboard" component={props => <UserDash />} />
         {/* {user && <button onClick={logout}>log out</button>} */}
+
         </Switch>
     </div>
   );
