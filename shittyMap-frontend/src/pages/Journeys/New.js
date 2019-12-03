@@ -6,9 +6,13 @@ import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
 // import { useHistory } from "react-router-dom";
 
+
+fetch(`${''}https://maps.googleapis.com/maps/api/directions/json?origin=${'London'}&destination=${'Bristol'}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
+  .then(res => res.json())
+  .then(thing => console.log(thing))
 export default class NewJourney extends Component {
 
-  state={
+  state = {
     title: '',
     setStartpoint: '',
     content: '',
@@ -16,36 +20,42 @@ export default class NewJourney extends Component {
     // history: useHistory()
   }
 
-   handleSubmit = (origin, destination) => {
-    console.log(origin, destination)
+  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  handleSubmit = (e, origin, destination) => {
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    e.preventDefault()
+    fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
+      .then(res => res.json())
+      .then(thing => console.log(thing))
+
   };
 
 
-  render(){
-  return (
-    <div className='ui container'>
-          <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui celled grid'>
+  render() {
+    return (
+      <div className='ui container'>
+        <SearchBar handleSubmit={this.handleSubmit} />
+        <div className='ui celled grid'>
 
-              <div className='ui row'>
+          <div className='ui row'>
+            <div className="eleven wide column">
+              <MapContainer />
+            </div>
+            <div className="five wide column">
+              <JourneyInformation />
+
+            </div>
+            <div className="ui row">
               <div className="eleven wide column">
-                <MapContainer />
-                </div>
-                <div className="five wide column">
-                <JourneyInformation />
-
-                </div>
-                <div className="ui row">
-                  <div className="eleven wide column">
-                  <ExtraInformation />
-                </div>
-                </div>
-                </div>
-                {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null }
+                <ExtraInformation />
               </div>
+            </div>
+          </div>
+          {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null}
         </div>
-  );
-}
+      </div>
+    );
+  }
 };
 
 
