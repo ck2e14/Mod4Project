@@ -22,7 +22,7 @@ class SearchBar extends React.Component{
   //  fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${this.state.origin}&destination=${this.state.destination}&key=IzaSyA4KsBwrhZbB_bnjtmZi1x67YTMMWmtQuU`)
   //     .then(res => res.json())
   //     .then(thing => console.log(thing))
-  // //  this.props.handleSubmit(this.state.origin, this.state.destination)
+  //  this.props.handleSubmit(this.state.origin, this.state.destination)
   // }
 
   render(){

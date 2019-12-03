@@ -6,6 +6,10 @@ import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
 // import { useHistory } from "react-router-dom";
 
+
+fetch(`${''}https://maps.googleapis.com/maps/api/directions/json?origin=${'London'}&destination=${'Bristol'}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
+  .then(res => res.json())
+  .then(thing => console.log(thing))
 export default class NewJourney extends Component {
 
   state = {
@@ -16,9 +20,11 @@ export default class NewJourney extends Component {
     // history: useHistory()
   }
 
+  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
   handleSubmit = (e, origin, destination) => {
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
     e.preventDefault()
-    fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=IzaSyA4KsBwrhZbB_bnjtmZi1x67YTMMWmtQuU`)
+    fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
       .then(res => res.json())
       .then(thing => console.log(thing))
 
