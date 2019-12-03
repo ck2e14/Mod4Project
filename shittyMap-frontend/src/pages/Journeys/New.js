@@ -6,6 +6,7 @@ import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
 // import { useHistory } from "react-router-dom";
 
+const options = ['driving', 'walking', 'bicycling', 'transit']
 
 fetch(`${''}https://maps.googleapis.com/maps/api/directions/json?origin=${'London'}&destination=${'Bristol'}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
   .then(res => res.json())
@@ -16,19 +17,40 @@ export default class NewJourney extends Component {
     title: '',
     setStartpoint: '',
     content: '',
-    setEndpoint: ''
+    setEndpoint: '',
+    allRoutes: []
     // history: useHistory()
   }
 
+
+
   // const proxyurl = "https://cors-anywhere.herokuapp.com/";
   handleSubmit = (e, origin, destination) => {
+    
+  options.map(option => {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     e.preventDefault()
-    fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
+    fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
       .then(res => res.json())
       .then(thing => console.log(thing))
 
+   });
+  
+  // console.log(this.state.allRoutes)
+
   };
+
+  // handleSubmit = (e, origin, destination) => {
+  //   const options = []
+  //   const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  //   e.preventDefault()
+  //   fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
+  //     .then(res => res.json())
+  //     .then(thing => options.push(thing))
+
+  //   console.log(options)
+
+  // };
 
 
   render() {
