@@ -9,11 +9,15 @@ const Card = props => {
   console.log(information)
 
   return (
-    <div>
+    <div >
       <p>
-        Distance: {information.distance.text} <br/>
+        Start: {information.start_address} <br />
+        End: {information.end_address} <br />
+        Distance: {information.distance.text} <br />
         Duration: {information.duration.text}
-      </p> 
+      </p>
+      <button>See More</button>
+      <button>Start Journey</button>
 
 
     </div>
