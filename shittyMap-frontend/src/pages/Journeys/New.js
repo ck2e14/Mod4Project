@@ -38,6 +38,7 @@ export default class NewJourney extends Component {
       walking: [],
       bicycling: [],
       transit: [],
+      selectedTransportMode: null
       // allRoutes: [],
     })
     // this.setState({allRoutes: []})
@@ -69,7 +70,9 @@ export default class NewJourney extends Component {
               <div className='ui row'>
 
             <div className="eleven wide column">
-              <Map origin={this.state.setStartpoint} destination={this.state.setEndpoint}/>
+              <Map origin={this.state.setStartpoint}
+                destination={this.state.setEndpoint}
+                selectedTransportMode={this.state.selectedTransportMode}/>
             </div>
             <div className="five wide column">
               <JourneyInformation

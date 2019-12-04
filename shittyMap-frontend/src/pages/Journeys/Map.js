@@ -13,13 +13,13 @@ const MyMapComponent = compose(
   withGoogleMap,
   lifecycle({
     componentDidUpdate(prevProps) {
-      if (prevProps !== this.props && this.props.origin && this.props.destination) {
+      if (prevProps !== this.props && this.props.origin && this.props.destination && this.props.selectedTransportMode) {
         const DirectionsService = new window.google.maps.DirectionsService();
 
         DirectionsService.route({
           origin: this.props.origin,
           destination: this.props.destination,
-          travelMode: 'WALKING',
+          travelMode: this.props.selectedTransportMode
         }, (result, status) => {
           if (status === window.google.maps.DirectionsStatus.OK) {
             this.setState({
