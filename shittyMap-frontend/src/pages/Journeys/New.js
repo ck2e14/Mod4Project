@@ -84,7 +84,7 @@ export default class NewJourney extends Component {
           duration: this.state.driving.routes[0].legs[0].duration.text,
           distance: this.state.driving.routes[0].legs[0].distance.text,
           transit_mode: 'DRIVING',
-          user_id: 1
+          user_id: this.props.user.id
         }
         )
       }
