@@ -25,7 +25,7 @@ export default class NewJourney extends Component {
     walking: null,
     bicycling: null,
     transit: null,
-    // allRoutes: [],
+    allRoutes: [],
     // history: useHistory()
   }
 
@@ -34,63 +34,66 @@ export default class NewJourney extends Component {
     this.setState({
       setStartpoint: origin,
       setEndpoint: destination,
-      driving: [],
-      walking: [],
-      bicycling: [],
-      transit: [],
+      driving: null,
+      walking: null,
+      bicycling: null,
+      transit: null,
       // allRoutes: [],
     })
     // this.setState({allRoutes: []})
     options.map((option) => {
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
       e.preventDefault()
+      this.setState({ allRoutes: [] })
       fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
         .then(res => res.json())
         .then(data => {
           this.setState({
-            [option]: data
+            [option]: data,
+            allRoutes: [...this.state.allRoutes, data]
           })
         }
-      )
+        )
     });
   };
 
 
-  render(){
-  return (
-    <div>
-      {this.props.user && <Navbar />}
-      <br></br>
-      <br></br>
+  render() {
+    return (
+      <div>
+        {this.props.user && <Navbar />}
+        <br></br>
+        <br></br>
         <div className='ui container'>
-          <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui celled grid'>
-              <div className='ui row'>
-
-            <div className="eleven wide column">
-              <Map origin={this.state.setStartpoint} destination={this.state.setEndpoint}/>
-            </div>
-            <div className="five wide column">
-              <JourneyInformation
-                driving={this.state.driving}
-                walking={this.state.walking}
-                bicycling={this.state.bicycling}
-                transit={this.state.transit}
-              />
-
-            </div>
-            <div className="ui row">
+          <SearchBar handleSubmit={this.handleSubmit} />
+          <div className='ui celled grid'>
+            <div className='ui row'>
 
               <div className="eleven wide column">
-                <ExtraInformation />
+                <Map origin={this.state.setStartpoint} destination={this.state.setEndpoint} />
+              </div>
+              <div className="five wide column">
+                <JourneyInformation
+                  routes={this.state.allRoutes}
+                  driving={this.state.driving}
+                  walking={this.state.walking}
+                  bicycling={this.state.bicycling}
+                  transit={this.state.transit}
+                />
+
+              </div>
+              <div className="ui row">
+
+                <div className="eleven wide column">
+                  <ExtraInformation />
+                </div>
               </div>
             </div>
+            {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null}
           </div>
-          {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null}
         </div>
       </div>
- </div>
-  );
-}
+    );
+  }
 
 };
