@@ -36,11 +36,12 @@ import {
    })}
 
 
-    render(){
+    render(){      
        return(
          <div>
             <Navbar user={this.props.user} logout={this.props.logout}/>  
             {this.renderJourneys()} 
+            <button onClick={() => console.log(this.props.user.id)}>TESTCLICK  </button>
          </div>
        )
     }

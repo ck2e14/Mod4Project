@@ -40,7 +40,11 @@ function App() {
         <Route path="/auth/login" component={props => <Login {...props} setUser={setUser} />} />
         <Route path="/auth/signup" component={props => <Signup {...props} setUser={setUser}/>} />
         <Route path="/journeys/new" render={routerProps => <NewJourney logout={logout} user={user}/>} />
-        <Route exact path="/dashboard" component={props => <UserDash user={user} logout={logout}/>} />
+        <Route exact path="/dashboard" component={props => {
+          return user
+          ? <UserDash user={user} logout={logout}/>
+          : null
+        }} />
         {/* {user && <button onClick={logout}>log out</button>} */}
 
       </Switch>

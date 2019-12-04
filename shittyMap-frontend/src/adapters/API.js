@@ -35,6 +35,21 @@ const signup = userDetails =>
     });
 // **************************************************************************************
 
+// const saveJourney = journeyDetails => {
+//   fetch(JOURNEYS_URL, {
+//     method: "POST",
+//     headers: {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json"
+//       },
+//       body: JSON.stringify({
+
+//       })
+//     }
+//   })
+// }
+
 const login = userDetails =>
   fetch(LOGIN_URL, {
     method: "POST",
