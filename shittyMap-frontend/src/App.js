@@ -46,7 +46,7 @@ function App() {
           : null
         }} />
         {/* {user && <button onClick={logout}>log out</button>} */}
-        
+
       </Switch>
     </div>
   );

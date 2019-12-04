@@ -8,12 +8,10 @@ class SearchBar extends React.Component{
 
   onOriginChange = (event) =>{
     this.setState({origin: event.target.value})
-    console.log(this.state.origin)
 
   }
   onDestinationChange = (event) =>{
     this.setState({destination: event.target.value})
-    console.log(this.state.destination)
   }
 
 
