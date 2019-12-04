@@ -5,8 +5,8 @@ export default class JourneyInformation extends Component {
   render() {
     return (
       <div>
-        Once someone choses the origin and destination, info should show up here.
-      </div>
+          {console.log(this.props.routes)}
+        </div>
     );
   }
 }
