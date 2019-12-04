@@ -30,10 +30,13 @@ export default class JourneyInformation extends Component {
 
 
   render() {
+    // console.log(this.props)
     return (
       <div>
+
         {this.getResults()}
         <JourneyCard  info={this.state.cunt}/>
+
       </div>
     );
   }
