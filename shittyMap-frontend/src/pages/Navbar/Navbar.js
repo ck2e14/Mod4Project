@@ -1,5 +1,6 @@
 import React from 'react';
 import API from "../../adapters/API";
+import Logo from "../../Media/Pictures/Logo.jpg"
 import {
    BrowserRouter as Router,
    Switch,
@@ -12,30 +13,30 @@ import {
 
  const dashStyle = {
     width: '100px',
-    padding: '12px',
-    margin: '0 6px 6px',
-    background: 'white',
+    padding: '0px',
+    margin: '0 25px 25px',
+    background: 'MintCream',
     textdecoration: 'none',
     color: 'black'
  }
 
  const Navbar = () => {
     return(
-    <div>
-       <NavLink
-         to='/dashboard'
-         exact
-         style={dashStyle}
-         activeStyle={{background: 'lightblue'}}
-         >User Dashboard</NavLink>
+   <div>       
          <NavLink
          to='/journeys/new'
          exact
          style={dashStyle}
-         activeStyle={{background: 'lightblue'}}
+         activeStyle={{background: 'PeachPuff'}}
          >Plan a New Journey</NavLink>
-
-    </div>
+         <NavLink
+         to='/dashboard'
+         exact
+         style={dashStyle}
+         activeStyle={{background: 'PeachPuff'}}
+         >User Dashboard</NavLink>
+         <img src={Logo} height="120" width="150" align="left"/> 
+   </div>
     )
  }
 

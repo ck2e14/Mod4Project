@@ -38,6 +38,7 @@ import {
        <div className="ui icon warning message">
            <i className="lock icon"></i>
            <div className="content">
+           <h1 align="center">  Welcome to MapStar!</h1>
              <div className="header">
                {!errors ? 'Signup failed!' : null}
              </div>
