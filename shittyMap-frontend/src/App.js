@@ -5,13 +5,12 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup"
 import Navbar from "./pages/Navbar/Navbar"
 import UserDash from "./pages/Dashboard/UserDash"
-
-
 import { Route, Redirect, Switch, useHistory, Link } from "react-router-dom";
 import Auth from "./pages/Auth";
 import paths from "./paths";
 import API from "./adapters/API";
 import NewJourney from "./pages/Journeys/New";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -36,17 +35,15 @@ function App() {
 
   return (
     <div className="App">
-      {user && <Navbar/>}
-      <br></br>
       <Switch>
         <Route exact path='/' component={props => <Login {...props} setUser={setUser}/>} />
         <Route path="/auth/login" component={props => <Login {...props} setUser={setUser} />} />
         <Route path="/auth/signup" component={props => <Signup {...props} setUser={setUser}/>} />
         <Route path="/journeys/new" render={routerProps => <NewJourney logout={logout} user={user}/>} />
-        <Route exact path="/dashboard" component={props => <UserDash />} />
+        <Route exact path="/dashboard" component={props => <UserDash user={user} logout={logout}/>} />
         {/* {user && <button onClick={logout}>log out</button>} */}
-
-        </Switch>
+        
+      </Switch>
     </div>
   );
 }

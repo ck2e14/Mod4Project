@@ -4,6 +4,7 @@ import MapContainer from './Map.js'
 import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
+import Navbar from '../Navbar/Navbar'
 // import { useHistory } from "react-router-dom";
 
 export default class NewJourney extends Component {
@@ -23,10 +24,13 @@ export default class NewJourney extends Component {
 
   render(){
   return (
-    <div className='ui container'>
+    <div>
+      {this.props.user && <Navbar />}
+      <br></br>
+      <br></br>
+        <div className='ui container'>
           <SearchBar handleSubmit={this.handleSubmit}/>
             <div className='ui celled grid'>
-
               <div className='ui row'>
               <div className="eleven wide column">
                 <MapContainer />
@@ -44,6 +48,7 @@ export default class NewJourney extends Component {
                 {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null }
               </div>
         </div>
+      </div>
   );
 }
 };
