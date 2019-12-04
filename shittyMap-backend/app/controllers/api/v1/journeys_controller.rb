@@ -1,5 +1,6 @@
 class Api::V1::JourneysController < ApplicationController
       def create
+
            journey = Journey.create(journey_params)
            user = @current_user
            journey.update(user: user)
@@ -23,6 +24,6 @@ class Api::V1::JourneysController < ApplicationController
    private
 
    def journey_params
-      params.require(:journey).permit(:startpoint, :endpoint, :user_id)
+      params.require(:journey).permit(:startpoint, :endpoint, :duration, :distance, :transit_mode, :user_id)
    end
 end
