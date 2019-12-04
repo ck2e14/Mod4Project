@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../adapters/API";
-import MapContainer from './Map.js'
+import Map from './Map.js'
 import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
@@ -46,7 +46,6 @@ export default class NewJourney extends Component {
       e.preventDefault()
       fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
         .then(res => res.json())
-        .then(data => console.log(data))
         .then(data => {
           this.setState({
             [option]: data
@@ -54,17 +53,7 @@ export default class NewJourney extends Component {
         }
       )
     });
-
   };
-
-  //   // iterate through this.state.allRoutes and save the index of the object that matches the driving conditions (no warnings).
-  //   // then save the object that is at that index from this.state.allRoutes to a variable. Then access that variable in a POST fetch that then persists the relevant keys' values. 
-
-  //   const index = this.state.allRoutes.findIndex(x=> x.routes[0].warnings === [])
-
-
-  // }
-
 
 
   render(){
@@ -79,15 +68,14 @@ export default class NewJourney extends Component {
               <div className='ui row'>
 
             <div className="eleven wide column">
-              <MapContainer origin={this.state.setStartpoint} destination={this.state.setEnd}/>
+              <Map origin={this.state.setStartpoint} destination={this.state.setEndpoint}/>
             </div>
             <div className="five wide column">
-              <JourneyInformation 
+              <JourneyInformation
                 driving={this.state.driving}
                 walking={this.state.walking}
                 bicycling={this.state.bicycling}
                 transit={this.state.transit}
-                // routes={this.state.allRoutes}
               />
 
             </div>
