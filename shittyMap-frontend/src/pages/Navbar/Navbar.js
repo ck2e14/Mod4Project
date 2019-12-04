@@ -22,7 +22,7 @@ import {
 
  const Navbar = () => {
     return(
-   <div>       
+   <div>
          <NavLink
          to='/journeys/new'
          exact
@@ -35,7 +35,7 @@ import {
          style={dashStyle}
          activeStyle={{background: 'PeachPuff'}}
          >User Dashboard</NavLink>
-         <img src={Logo} height="120" width="150" align="left"/> 
+         <img src={Logo} height="120" width="150" align="left"/>
    </div>
     )
  }

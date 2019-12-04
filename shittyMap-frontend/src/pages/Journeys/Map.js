@@ -1,30 +1,80 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import React from "react"
+import { compose, withProps, lifecycle } from "recompose"
+import { DirectionsRenderer, withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-const mapStyles = {
-  width: '100%',
-  height: '100%',
-};
+const MyMapComponent = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDSDyNUIpUJXlUUkm2LfaG2wCLFVr1MFi4&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap,
+  lifecycle({
+    componentDidUpdate(prevProps) {
+      if (prevProps !== this.props && this.props.origin && this.props.destination) {
+        const DirectionsService = new window.google.maps.DirectionsService();
 
-export class MapContainer extends Component {
+        DirectionsService.route({
+          origin: this.props.origin,
+          destination: this.props.destination,
+          travelMode: 'WALKING',
+        }, (result, status) => {
+          if (status === window.google.maps.DirectionsStatus.OK) {
+            this.setState({
+              directions: result,
+            });
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        });
+      }
+    }
+  })
+)(props =>
+  <GoogleMap
+    defaultZoom={12}
+    defaultCenter={new window.google.maps.LatLng(51.5197, -0.0878)}
+  >
+    {props.directions && <DirectionsRenderer directions={props.directions} />}
+  </GoogleMap>
+);
+
+
+
+
+
+export default class Map extends React.PureComponent {
+  state = {
+    isMarkerShown: false
+  }
+
+  componentDidMount() {
+    this.delayedShowMarker()
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true })
+    }, 1000)
+  }
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false })
+    this.delayedShowMarker()
+  }
+
   render() {
-
+    console.log(this.props.origin)
+    console.log(this.props.destination)
     return (
-      <div className='ui embed'>
-        <Map
-          style={mapStyles}
-          google={this.props.google}
-          zoom={12}
-          initialCenter={{
-           lat: 51.508,
-           lng: -0.13
-          }}
-        />
-      </div>
-    );
+      <MyMapComponent
+        origin={this.props.origin}
+        destination={this.props.destination}
+        isMarkerShown={this.state.isMarkerShown}
+        onMarkerClick={this.handleMarkerClick}
+      />
+    )
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDSDyNUIpUJXlUUkm2LfaG2wCLFVr1MFi4'
-})(MapContainer);
