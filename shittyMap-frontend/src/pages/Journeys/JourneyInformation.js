@@ -5,13 +5,22 @@ import Card from './InfoCard.js'
 export default class JourneyInformation extends Component {
 
   renderInfoCardsForRoutes = (routesArray) => {
-    return routesArray.map((route) => <Card route={route} />)
+    if(routesArray !== []){
+      if(routesArray === undefined){
+          console.log('broken ass stuff')
+      }else{
+      return routesArray.map((route) => <Card route={route} />)
+      }
+    }else{
+      console.log('goodbye')
+    }
+    //
   }
 
 
   render() {
 
-    
+
     return (
       <div>
 

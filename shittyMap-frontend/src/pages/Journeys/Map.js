@@ -66,8 +66,6 @@ export default class Map extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props.origin)
-    console.log(this.props.destination)
     return (
       <MyMapComponent
         origin={this.props.origin}
