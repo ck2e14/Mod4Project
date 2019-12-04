@@ -25,7 +25,7 @@ export default class NewJourney extends Component {
     walking: null,
     bicycling: null,
     transit: null,
-    // allRoutes: [],
+    allRoutes: [],
     // history: useHistory()
   }
 
@@ -39,20 +39,23 @@ export default class NewJourney extends Component {
       bicycling: [],
       transit: [],
       selectedTransportMode: null
+
       // allRoutes: [],
     })
     // this.setState({allRoutes: []})
     options.map((option) => {
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
       e.preventDefault()
+      this.setState({ allRoutes: [] })
       fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
         .then(res => res.json())
         .then(data => {
           this.setState({
-            [option]: data
+            [option]: data,
+            allRoutes: [...this.state.allRoutes, data]
           })
         }
-      )
+        )
     });
   };
 
@@ -84,16 +87,16 @@ export default class NewJourney extends Component {
             </div>
             <div className="ui row">
 
-              <div className="eleven wide column">
-                <ExtraInformation />
+                <div className="eleven wide column">
+                  <ExtraInformation />
+                </div>
               </div>
             </div>
+            {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null}
           </div>
-          {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null}
         </div>
       </div>
- </div>
-  );
-}
+    );
+  }
 
 };
