@@ -59,10 +59,11 @@ export default class NewJourney extends Component {
   render(){
   return (
     <div>
-      {this.props.user && <Navbar />}
-      <br></br>
-      <br></br>
+
         <div className='ui container'>
+          {this.props.user && <Navbar />}
+          <br></br>
+          <br></br>
           <SearchBar handleSubmit={this.handleSubmit}/>
             <div className='ui celled grid'>
               <div className='ui row'>
@@ -77,7 +78,6 @@ export default class NewJourney extends Component {
                 bicycling={this.state.bicycling}
                 transit={this.state.transit}
               />
-
             </div>
             <div className="ui row">
 

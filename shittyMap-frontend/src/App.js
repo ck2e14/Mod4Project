@@ -42,7 +42,7 @@ function App() {
         <Route path="/journeys/new" render={routerProps => <NewJourney logout={logout} user={user}/>} />
         <Route exact path="/dashboard" component={props => <UserDash user={user} logout={logout}/>} />
         {/* {user && <button onClick={logout}>log out</button>} */}
-        
+
       </Switch>
     </div>
   );
