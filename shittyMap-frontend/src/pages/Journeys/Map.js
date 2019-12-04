@@ -7,8 +7,8 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
-
   render() {
+
     return (
       <div className='ui embed'>
         <Map
