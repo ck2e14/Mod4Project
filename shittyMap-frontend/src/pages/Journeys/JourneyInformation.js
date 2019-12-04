@@ -13,9 +13,10 @@ export default class JourneyInformation extends Component {
 
 
   render() {
+    // console.log(this.props)
     return (
       <div>
-          {this.getRoutes()}
+
       </div>
     );
   }

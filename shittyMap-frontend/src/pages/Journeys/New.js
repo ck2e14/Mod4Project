@@ -11,9 +11,9 @@ import Navbar from '../Navbar/Navbar'
 
 const options = ['driving', 'walking', 'bicycling', 'transit']
 
-fetch(`${''}https://maps.googleapis.com/maps/api/directions/json?origin=${'London'}&destination=${'Bristol'}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
-  .then(res => res.json())
-  .then(thing => console.log(thing))
+// fetch(`${''}https://maps.googleapis.com/maps/api/directions/json?origin=${'London'}&destination=${'Bristol'}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
+//   .then(res => res.json())
+//   .then(thing => console.log(thing))
 export default class NewJourney extends Component {
 
   state = {
@@ -21,7 +21,11 @@ export default class NewJourney extends Component {
     setStartpoint: '',
     content: '',
     setEndpoint: '',
-    allRoutes: []
+    driving: null,
+    walking: null,
+    bicycling: null,
+    transit: null,
+    // allRoutes: [],
     // history: useHistory()
   }
 
@@ -29,23 +33,37 @@ export default class NewJourney extends Component {
   handleSubmit = (e, origin, destination) => {
     this.setState({
       setStartpoint: origin,
-      setEndpoint: destination
+      setEndpoint: destination,
+      driving: [],
+      walking: [],
+      bicycling: [],
+      transit: [],
+      // allRoutes: [],
     })
-  options.map((option,i) => {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    e.preventDefault()
-    this.setState({allRoutes: []})
-    fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          allRoutes: [...this.state.allRoutes, data, option]
-        })
-      }
-    )
-   });
+    // this.setState({allRoutes: []})
+    options.map((option) => {
+      const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      e.preventDefault()
+      fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .then(data => {
+          this.setState({
+            [option]: data
+          })
+        }
+      )
+    });
 
   };
+
+  //   // iterate through this.state.allRoutes and save the index of the object that matches the driving conditions (no warnings).
+  //   // then save the object that is at that index from this.state.allRoutes to a variable. Then access that variable in a POST fetch that then persists the relevant keys' values. 
+
+  //   const index = this.state.allRoutes.findIndex(x=> x.routes[0].warnings === [])
+
+
+  // }
 
 
 
@@ -64,7 +82,13 @@ export default class NewJourney extends Component {
               <MapContainer origin={this.state.setStartpoint} destination={this.state.setEnd}/>
             </div>
             <div className="five wide column">
-              <JourneyInformation routes={this.state.allRoutes}/>
+              <JourneyInformation 
+                driving={this.state.driving}
+                walking={this.state.walking}
+                bicycling={this.state.bicycling}
+                transit={this.state.transit}
+                // routes={this.state.allRoutes}
+              />
 
             </div>
             <div className="ui row">
