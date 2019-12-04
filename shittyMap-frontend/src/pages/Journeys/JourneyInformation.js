@@ -8,6 +8,7 @@ export default class JourneyInformation extends Component {
     return routesArray.map((route) => <Card route={route} />)
   }
 
+
   render() {
     return (
       <div>

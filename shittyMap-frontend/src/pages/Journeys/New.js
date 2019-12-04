@@ -34,10 +34,12 @@ export default class NewJourney extends Component {
     this.setState({
       setStartpoint: origin,
       setEndpoint: destination,
-      driving: null,
-      walking: null,
-      bicycling: null,
-      transit: null,
+      driving: [],
+      walking: [],
+      bicycling: [],
+      transit: [],
+      selectedTransportMode: null
+
       // allRoutes: [],
     })
     // this.setState({allRoutes: []})
@@ -58,31 +60,32 @@ export default class NewJourney extends Component {
   };
 
 
-  render() {
-    return (
-      <div>
-        {this.props.user && <Navbar />}
-        <br></br>
-        <br></br>
+  render(){
+  return (
+    <div>
+
         <div className='ui container'>
-          <SearchBar handleSubmit={this.handleSubmit} />
-          <div className='ui celled grid'>
-            <div className='ui row'>
+          {this.props.user && <Navbar />}
+          <br></br>
+          <br></br>
+          <SearchBar handleSubmit={this.handleSubmit}/>
+            <div className='ui celled grid'>
+              <div className='ui row'>
 
-              <div className="eleven wide column">
-                <Map origin={this.state.setStartpoint} destination={this.state.setEndpoint} />
-              </div>
-              <div className="five wide column">
-                <JourneyInformation
-                  routes={this.state.allRoutes}
-                  driving={this.state.driving}
-                  walking={this.state.walking}
-                  bicycling={this.state.bicycling}
-                  transit={this.state.transit}
-                />
-
-              </div>
-              <div className="ui row">
+            <div className="eleven wide column">
+              <Map origin={this.state.setStartpoint}
+                destination={this.state.setEndpoint}
+                selectedTransportMode={this.state.selectedTransportMode}/>
+            </div>
+            <div className="five wide column">
+              <JourneyInformation
+                driving={this.state.driving}
+                walking={this.state.walking}
+                bicycling={this.state.bicycling}
+                transit={this.state.transit}
+              />
+            </div>
+            <div className="ui row">
 
                 <div className="eleven wide column">
                   <ExtraInformation />
