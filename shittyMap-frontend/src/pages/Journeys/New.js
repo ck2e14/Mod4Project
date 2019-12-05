@@ -57,7 +57,7 @@ export default class NewJourney extends Component {
 
 
 
-
+// *************************** HANDLE SELECTED JOURNEY METHODS ********************************** //
 
   handleDrivingSelect = () => {
 
@@ -81,8 +81,83 @@ export default class NewJourney extends Component {
         )
       }
     )
-    // console.log(this.state.driving.routes[0].legs[0].distance.text)
   }
+
+  handleWalkingSelect = () => {
+    // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
+    // console.log(mode)
+    this.setState({
+      selectedTransportMode: 'WALKING'
+    });
+    fetch("http://localhost:3000/api/v1/journeys", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          startpoint: this.state.setStartpoint,
+          endpoint: this.state.setEndpoint,
+          duration: this.state.walking.routes[0].legs[0].duration.text,
+          distance: this.state.walking.routes[0].legs[0].distance.text,
+          transit_mode: 'WALKING',
+          user_id: this.props.user.id
+        }
+        )
+      }
+    )
+  }
+
+  handlePublicTransportSelect = () => {
+    // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
+    // console.log(mode)
+    this.setState({
+      selectedTransportMode: 'TRANSIT'
+    });
+    fetch("http://localhost:3000/api/v1/journeys", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          startpoint: this.state.setStartpoint,
+          endpoint: this.state.setEndpoint,
+          duration: this.state.transit.routes[0].legs[0].duration.text,
+          distance: this.state.transit.routes[0].legs[0].distance.text,
+          transit_mode: 'TRANSIT',
+          user_id: this.props.user.id
+        }
+        )
+      }
+    )
+  }
+
+  handleCyclingSelect = () => {
+    // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
+    // console.log(mode)
+    this.setState({
+      selectedTransportMode: 'CYCLING'
+    });
+    fetch("http://localhost:3000/api/v1/journeys", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          startpoint: this.state.setStartpoint,
+          endpoint: this.state.setEndpoint,
+          duration: this.state.bicycling.routes[0].legs[0].duration.text,
+          distance: this.state.bicycling.routes[0].legs[0].distance.text,
+          transit_mode: 'BICYLCING',
+          user_id: this.props.user.id
+        }
+        )
+      }
+    )
+  }
+  //****************************END OF HANDLE MODE SELECT METHODS******************************//
 
   render(){
   return (
@@ -108,6 +183,9 @@ export default class NewJourney extends Component {
                 bicycling={this.state.bicycling}
                 transit={this.state.transit}
                 handleDrivingSelect={this.handleDrivingSelect}
+                handleWalkingSelect={this .handleWalkingSelect}
+                handlePublicTransportSelect={this.handlePublicTransportSelect}
+                handleCyclingSelect={this.handleCyclingSelect}
               />
             </div>
             <div className="ui row">

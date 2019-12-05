@@ -24,6 +24,7 @@ export default class JourneyInformation extends Component {
       {this.props.walking ?  <button onClick={() => this.props.handleSelectedModeClick('TRANSIT')}>Choose Public Tranport</button> : null}
         <br></br>
       {this.props.transit ?  <button onClick={() => this.props.handleSelectedModeClick('BICYCLING')}>Choose Cycling</button>: null}
+
         <br></br>
         <div>
           {this.props.driving ? <h2>Driving</h2> : <h1>Search to see details!</h1>}
