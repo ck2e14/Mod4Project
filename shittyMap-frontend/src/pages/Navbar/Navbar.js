@@ -20,7 +20,7 @@ import {
     color: 'black'
  }
 
- const Navbar = () => {
+ const Navbar = (props) => {
     return(
    <div>
          <NavLink
@@ -36,7 +36,10 @@ import {
          activeStyle={{background: 'PeachPuff'}}
          >User Dashboard</NavLink>
          <img src={Logo} height="120" width="150" align="left"/>
+        {props.user.id ? <button onClick={props.logout}>Log Out</button> : null}
+
    </div>
+
     )
  }
 

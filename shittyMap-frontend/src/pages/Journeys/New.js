@@ -7,13 +7,8 @@ import ExtraInformation from './ExtraInformation'
 import Navbar from '../Navbar/Navbar'
 // import { useHistory } from "react-router-dom";
 
-
-
 const options = ['driving', 'walking', 'bicycling', 'transit']
 
-// fetch(`${''}https://maps.googleapis.com/maps/api/directions/json?origin=${'London'}&destination=${'Bristol'}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
-//   .then(res => res.json())
-//   .then(thing => console.log(thing))
 export default class NewJourney extends Component {
 
   state = {
@@ -27,7 +22,6 @@ export default class NewJourney extends Component {
     transit: null,
     selectedTransportMode: null,
     // allRoutes: [],
-
     // history: useHistory()
   }
 
@@ -41,7 +35,6 @@ export default class NewJourney extends Component {
       bicycling: [],
       transit: [],
       selectedTransportMode: null
-
       // allRoutes: [],
     })
     // this.setState({allRoutes: []})
@@ -67,8 +60,7 @@ export default class NewJourney extends Component {
 
 
   handleDrivingSelect = () => {
-    // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
-    // console.log(mode)
+
     this.setState({
       selectedTransportMode: 'DRIVING'
     });
@@ -97,11 +89,11 @@ export default class NewJourney extends Component {
     <div>
 
         <div className='ui container'>
-          {this.props.user && <Navbar />}
+          {this.props.user && <Navbar user={this.props.user} logout={this.props.logout}/>}
           <br></br>
           <br></br>
           <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui celled grid'>
+            <div className='ui segment grid'>
               <div className='ui row'>
 
             <div className="eleven wide column">
@@ -125,7 +117,6 @@ export default class NewJourney extends Component {
                 </div>
               </div>
             </div>
-            {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null}
           </div>
         </div>
       </div>

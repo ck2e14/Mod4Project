@@ -7,46 +7,39 @@ export default class JourneyInformation extends Component {
   renderInfoCardsForRoutes = (routesArray) => {
     if(routesArray !== []){
       if(routesArray === undefined){
-          console.log('broken ass stuff')
       }else{
-      return routesArray.map((route) => <Card route={route} />)
+      return routesArray.map((route, index) => <Card route={route} id={index}/>)
       }
     }else{
-      console.log('goodbye')
     }
-    //
   }
 
-
   render() {
-
-
     return (
       <div>
-
-        <button onClick={() => this.props.handleDrivingSelect ('DRIVING')}>Choose Driving</button>
+      {this.props.driving ?  <button onClick={() => this.props.handleDrivingSelect ('DRIVING')}>Choose Driving</button> : null}
         <br></br>
-        <button onClick={() => this.props.handleSelectedModeClick('WALKING')}>Choose Walking</button>
+        {this.props.bicycling ? <button onClick={() => this.props.handleSelectedModeClick('WALKING')}>Choose Walking</button> : null}
         <br></br>
-        <button onClick={() => this.props.handleSelectedModeClick('TRANSIT')}>Choose Public Tranport</button>
+      {this.props.walking ?  <button onClick={() => this.props.handleSelectedModeClick('TRANSIT')}>Choose Public Tranport</button> : null}
         <br></br>
-        <button onClick={() => this.props.handleSelectedModeClick('BICYCLING')}>Choose Cycling</button>
+      {this.props.transit ?  <button onClick={() => this.props.handleSelectedModeClick('BICYCLING')}>Choose Cycling</button>: null}
         <br></br>
         <div>
-          <h2>Driving</h2>
-          {this.props.driving ? this.renderInfoCardsForRoutes(this.props.driving.routes) : <p>No routes available</p>}
+          {this.props.driving ? <h2>Driving</h2> : <h1>Search to see details!</h1>}
+          {this.props.driving ? this.renderInfoCardsForRoutes(this.props.driving.routes) : null}
         </div>
         <div>
-          <h2>Cycling</h2>
-          {this.props.bicycling ? this.renderInfoCardsForRoutes(this.props.bicycling.routes) : <p>No routes available</p>}
+        {this.props.bicycling ?  <h2>Cycling</h2> : null}
+          {this.props.bicycling ? this.renderInfoCardsForRoutes(this.props.bicycling.routes) : null}
         </div>
         <div>
-          <h2>Walking</h2>
-          {this.props.walking ? this.renderInfoCardsForRoutes(this.props.walking.routes) : <p>No routes available</p>}
+        {this.props.walking ?   <h2>Walking</h2> : null}
+          {this.props.walking ? this.renderInfoCardsForRoutes(this.props.walking.routes) : null}
         </div>
         <div>
-          <h2>Transit</h2>
-          {this.props.transit ? this.renderInfoCardsForRoutes(this.props.transit.routes) : <p>No routes available</p>}
+        {this.props.transit ?  <h2>Transit</h2> : null}
+          {this.props.transit ? this.renderInfoCardsForRoutes(this.props.transit.routes) : null}
         </div>
       </div>
     )
