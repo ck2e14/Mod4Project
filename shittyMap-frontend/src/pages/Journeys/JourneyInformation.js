@@ -19,11 +19,11 @@ export default class JourneyInformation extends Component {
       <div>
       {this.props.driving ?  <button onClick={() => this.props.handleDrivingSelect ('DRIVING')}>Choose Driving</button> : null}
         <br></br>
-        {this.props.bicycling ? <button onClick={() => this.props.handleSelectedModeClick('WALKING')}>Choose Walking</button> : null}
+        {this.props.bicycling ? <button onClick={() => this.props.handleWalkingSelect('WALKING')}>Choose Walking</button> : null}
         <br></br>
-      {this.props.walking ?  <button onClick={() => this.props.handleSelectedModeClick('TRANSIT')}>Choose Public Tranport</button> : null}
+      {this.props.walking ?  <button onClick={() => this.props.handlePublicTransportSelect('TRANSIT')}>Choose Public Tranport</button> : null}
         <br></br>
-      {this.props.transit ?  <button onClick={() => this.props.handleSelectedModeClick('BICYCLING')}>Choose Cycling</button>: null}
+      {this.props.transit ?  <button onClick={() => this.props.handleCyclingSelect('BICYCLING')}>Choose Cycling</button>: null}
 
         <br></br>
         <div>
