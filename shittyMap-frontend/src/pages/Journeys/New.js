@@ -137,7 +137,7 @@ export default class NewJourney extends Component {
     // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
     // console.log(mode)
     this.setState({
-      selectedTransportMode: 'CYCLING'
+      selectedTransportMode: 'BICYCLING'
     });
     fetch("http://localhost:3000/api/v1/journeys", {
       method: "POST",
