@@ -70,6 +70,7 @@ export default class Map extends React.PureComponent {
       <MyMapComponent
         origin={this.props.origin}
         destination={this.props.destination}
+        selectedTransportMode={this.props.selectedTransportMode}
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
       />

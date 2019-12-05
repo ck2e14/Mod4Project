@@ -1,15 +1,11 @@
 import React from 'react';
 
 const Card = props => {
-
   const { route } = props;
-
   const information = props.route.legs[0]
 
-  console.log(information)
-
   return (
-    <div >
+    <div className='ui card'>
       <p>
         Start: {information.start_address} <br />
         End: {information.end_address} <br />
@@ -18,8 +14,6 @@ const Card = props => {
       </p>
       <button>See More</button>
       <button>Start Journey</button>
-
-
     </div>
   )
 
