@@ -161,6 +161,8 @@ export default class NewJourney extends Component {
 
   render(){
   return (
+    <div>
+
         <div className='ui container'>
           {this.props.user && <Navbar user={this.props.user} logout={this.props.logout}/>}
           <br></br>
@@ -169,12 +171,12 @@ export default class NewJourney extends Component {
             <div className='ui segment celled grid' id='main-div'>
               <div className='row'>
 
-            <div className="ten wide column">
+            <div className="eleven wide column">
               <Map origin={this.state.setStartpoint}
                 destination={this.state.setEndpoint}
                 selectedTransportMode={this.state.selectedTransportMode}/>
             </div>
-            <div className="eight wide column" id='info-div'>
+            <div className="five wide column" id='info-div'>
               <JourneyInformation
                 driving={this.state.driving}
                 walking={this.state.walking}
@@ -185,11 +187,16 @@ export default class NewJourney extends Component {
                 handlePublicTransportSelect={this.handlePublicTransportSelect}
                 handleCyclingSelect={this.handleCyclingSelect}
               />
+
             </div>
             </div>
+
           </div>
+          <div className="eleven wide column">
             <ExtraInformation />
+          </div>
         </div>
+      </div>
     );
   }
 

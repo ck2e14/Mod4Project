@@ -40,8 +40,10 @@ import {
        return(
          <div>
             <Navbar user={this.props.user} logout={this.props.logout}/>  
-            {this.renderJourneys()} 
-            <button onClick={() => console.log(this.props.user.id)}>TESTCLICK  </button>
+            <h2><strong>This Component Remains in Beta ;)</strong></h2>
+            <div id="saved-journeys"> 
+               {this.renderJourneys()} 
+            </div>
          </div>
        )
     }

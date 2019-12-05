@@ -1,6 +1,6 @@
 import React from 'react';
 import API from "../../adapters/API";
-import Logo from "../../Media/Pictures/Logo.png"
+import Logo from "../../Media/Pictures/StarLogo.png"
 import {
    BrowserRouter as Router,
    Switch,
@@ -26,14 +26,12 @@ import {
          to='/journeys/new'
          exact
          style={dashStyle}
-         activeStyle={{background: 'grey'}}
          >Plan a New Journey</NavLink>
          <NavLink
          to='/dashboard'
          exact
          style={dashStyle}
-         activeStyle={{background: 'grey'}}
-         >User Dashboard</NavLink>
+         >My Saved Journeys</NavLink>
          <img src={Logo} height="120" width="150" align="left"/>
         {props.user.id ? <button onClick={props.logout}>Log Out</button> : null}
 

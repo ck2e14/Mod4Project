@@ -33,7 +33,7 @@ body > .grid {
 
 
 .app-container{
-  background-color: #a2b9bc;
+  background-color: #878f99  ;
   width: 100%;
   height: 100vh;
 }
@@ -55,4 +55,8 @@ body > .grid {
   float: right;
   position: relative;
 
+}
+#saved-journeys{
+  overflow: scroll;
+  height: 800px
 }
