@@ -168,15 +168,15 @@ export default class NewJourney extends Component {
           <br></br>
           <br></br>
           <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui segment grid'>
-              <div className='ui row'>
+            <div className='ui segment celled grid' id='main-div'>
+              <div className='row'>
 
             <div className="eleven wide column">
               <Map origin={this.state.setStartpoint}
                 destination={this.state.setEndpoint}
                 selectedTransportMode={this.state.selectedTransportMode}/>
             </div>
-            <div className="five wide column">
+            <div className="five wide column" id='info-div'>
               <JourneyInformation
                 driving={this.state.driving}
                 walking={this.state.walking}
@@ -187,14 +187,13 @@ export default class NewJourney extends Component {
                 handlePublicTransportSelect={this.handlePublicTransportSelect}
                 handleCyclingSelect={this.handleCyclingSelect}
               />
-            </div>
-            <div className="ui row">
 
-                <div className="eleven wide column">
-                  <ExtraInformation />
-                </div>
-              </div>
             </div>
+            </div>
+
+          </div>
+          <div className="eleven wide column">
+            <ExtraInformation />
           </div>
         </div>
       </div>

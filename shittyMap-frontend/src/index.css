@@ -38,6 +38,24 @@ body > .grid {
   height: 100vh;
 }
 
+#info-div{
+  overflow: scroll;
+  height: 41vh;
+  position: relative;
+
+}
+
+#main-div{
+  padding: 0;
+  position: relative;
+  top: 0;
+}
+
+.row{
+  float: right;
+  position: relative;
+
+}
 #saved-journeys{
   overflow: scroll;
   height: 800px
