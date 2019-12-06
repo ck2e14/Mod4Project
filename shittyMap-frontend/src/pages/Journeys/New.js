@@ -194,7 +194,7 @@ export default class NewJourney extends Component {
           </div>
           <div className="eleven wide column">
             <ExtraInformation />
-          </div>
+          </div>  
         </div>
       </div>
     );
