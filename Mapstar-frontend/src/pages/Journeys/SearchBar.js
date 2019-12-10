@@ -8,12 +8,10 @@ class SearchBar extends React.Component{
 
   onOriginChange = (event) =>{
     this.setState({origin: event.target.value})
-    console.log(this.state.origin)
 
   }
   onDestinationChange = (event) =>{
     this.setState({destination: event.target.value})
-    console.log(this.state.destination)
   }
 
 
@@ -27,7 +25,7 @@ class SearchBar extends React.Component{
 
   render(){
     return(
-      <div className='search-bar ui segment'>
+      <div className='search-bar-ui-segment'>
         <form className='ui form' onSubmit={(e) => this.props.handleSubmit(e, this.state.origin, this.state.destination)}>
           <div className='field'>
             <label>Plan your journey!</label>

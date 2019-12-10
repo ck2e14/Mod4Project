@@ -5,7 +5,7 @@ export default class ExtraInformation extends Component {
   render() {
     return (
       <div>
-        test
+        
       </div>
     );
   }
