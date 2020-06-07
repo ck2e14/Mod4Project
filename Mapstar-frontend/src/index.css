@@ -7,7 +7,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(182, 26, 26) !important;
+  color: rgb(255, 255, 255) !important;
+}
+.ui.card {
+  background-color: transparent !important;
+  border-style: none !important;
+  box-shadow: none !important
+}
+
+.eleven.wide.column {
+  flex: 1 !important
 }
 
 code {
@@ -40,7 +49,24 @@ body > .grid {
 
 .eleven {
   display: none;
+  flex: 2 !important;
   background-color: rgba(0, 255, 255, 0);
+}
+
+.eleven.wide.column {
+  flex: 2 !important;
+}
+
+.ui.celled.grid>.column:not(.row), .ui.celled.grid>.row>.column {
+  padding: 1em;
+  flex: 2 !important;
+}
+
+.ui.celled.grid>.column:first-child, .ui.celled.grid>.row>.column:first-child {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  flex: 2.5 !important;
+  height: 60vh;
 }
 
 .segment {
@@ -75,15 +101,21 @@ body > .grid {
 
 .ui.container {
   border-style: none !important;
-  width: 90vw !important;
-  height: 78vh !important;
+  width: 100vw !important;
+  height: 100vh !important;
 }
+
 #info-div{
   overflow: scroll;
   height: 41vh;
   position: relative;
-
+  flex: 1 !important;
 }
+
+.ui.celled.grid>.column:not(.row), .ui.celled.grid>.row>.column {
+  padding: 1em;
+  flex: 1 !important;
+} 
 
 #main-div{
   padding: 0;
@@ -94,6 +126,7 @@ body > .grid {
 .row {
   position: relative;
   min-width: 30vw ;
+  display: flex !important;
 }
 
 #saved-journeys{
@@ -133,4 +166,5 @@ body > .grid {
 
 .five {
   overflow: auto !important;    
+  flex: 1 !important;
 }

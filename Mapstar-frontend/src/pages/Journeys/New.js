@@ -62,7 +62,6 @@ export default class NewJourney extends Component {
     // added conditional to protect against crashing when API fails to return route information 
       if(this.state.driving != null && this.state.driving.routes.length > 0 ) {
         console.log(this.state.driving)
-        debugger;
         fetch("http://localhost:3000/api/v1/journeys", {
         method: "POST",
         headers: {
@@ -80,6 +79,9 @@ export default class NewJourney extends Component {
           )
         }
       )
+    }
+    else {
+      alert('No route information obtained. Please try a more specific origin and destination.');  
     }
   }
 
@@ -109,6 +111,9 @@ export default class NewJourney extends Component {
       }
     )
     }
+    else {
+      alert('No route information obtained. Please try a more specific origin and destination.');  
+    }
   }
 
   handlePublicTransportSelect = () => {
@@ -136,6 +141,9 @@ export default class NewJourney extends Component {
         )
       }
     )
+    }
+    else {
+      alert('No route information obtained. Please try a more specific origin and destination.');  
     }
   }
 
@@ -165,6 +173,9 @@ export default class NewJourney extends Component {
       }
     ) 
     }
+    else {
+      alert('No route information obtained. Please try a more specific origin and destination.');  
+    } 
   }
   //*************END OF HANDLE MODE SELECT METHODS********************//
 
