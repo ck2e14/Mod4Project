@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white !important;
 }
 
 code {
@@ -16,15 +17,15 @@ code {
 
 body > .grid {
     height: 20vh;
-  }
+}
 
-  .column {
-    max-width: 450px;
-  }
+.column {
+    /* max-width: 450px;   */
+}
 
-  .page-login {
+.page-login {
     padding : 30vh;
-  }
+}
 
 .map{
   padding:0;
@@ -32,14 +33,24 @@ body > .grid {
 }
 
 .app-container{
-  background-color: #13a0a5  ;
-  width: 100%;
+  background-color: #022c44  ;
+  width: 100%;  
   height: 100vh;
 }
 
+.eleven {
+  display: none;
+  background-color: rgba(0, 255, 255, 0);
+}
+
+.segment {
+  background-color: rgba(0, 255, 255, 0) !important;
+  border-style: none !important;
+}
+
 .ui {
-  border-style: solid;
   display: flex;
+  clear: both;
 }
 
 #info-div{
@@ -55,12 +66,46 @@ body > .grid {
   top: 0;
 }
 
-.row{
-  float: right;
+.row {
   position: relative;
-
+  min-width: 30vw ;
 }
+
 #saved-journeys{
   overflow: scroll;
   height: 800px
+}
+
+.top-layer-flex-container {
+  position: fixed;
+  /* top: 20vh; */
+  left: 0;
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  border-style: solid;
+}
+
+.flex-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 20vh;
+  height: 100vh !important;
+  margin-top: 1vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-item {
+  flex: 1;
+  flex-basis: 20%;
+  min-width: 60vw;
+  border-style: solid;
+}
+
+.five {
+  overflow: auto !important;    
 }

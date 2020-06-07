@@ -4,8 +4,6 @@ import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
 import Navbar from '../Navbar/Navbar'
-// import API from "../../adapters/API";
-// import { useHistory } from "react-router-dom";
 
 const options = ['driving', 'walking', 'bicycling', 'transit']
 
@@ -25,7 +23,6 @@ export default class NewJourney extends Component {
     // history: useHistory()
   }
 
-  // const proxyurl = "https://cors-anywhere.herokuapp.com/";
   handleSubmit = (e, origin, destination) => {
     this.setState({
       setStartpoint: origin,
@@ -40,8 +37,11 @@ export default class NewJourney extends Component {
     // this.setState({allRoutes: []})
     options.map((option) => {
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
       e.preventDefault()
+      
       this.setState({ allRoutes: [] })
+      
       fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
         .then(res => res.json())
         .then(data => {
@@ -49,8 +49,7 @@ export default class NewJourney extends Component {
             [option]: data,
             allRoutes: [...this.state.allRoutes, data]
           })
-        }
-        )
+        })
     });
   };
 
@@ -65,7 +64,7 @@ export default class NewJourney extends Component {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
+          Accept: "application/json", 
         },
         body: JSON.stringify({
           startpoint: this.state.setStartpoint,
@@ -160,19 +159,23 @@ export default class NewJourney extends Component {
   return (
     <div>
 
-        <div className='ui container'>
-          {this.props.user && <Navbar user={this.props.user} logout={this.props.logout}/>}
-          <br></br>
-          <br></br>
-          <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui segment celled grid' id='main-div'>
-              <div className='row'>
+      <div className='ui container'>
+
+        {this.props.user && <Navbar user={this.props.user} logout={this.props.logout}/>}
+
+        <br></br>
+        <br></br>
+  
+        <div className='ui segment celled grid' id='main-div'>
+  
+          <div className='row'>
 
             <div className="eleven wide column">
               <Map origin={this.state.setStartpoint}
                 destination={this.state.setEndpoint}
                 selectedTransportMode={this.state.selectedTransportMode}/>
             </div>
+      
             <div className="five wide column" id='info-div'>
               <JourneyInformation
                 driving={this.state.driving}
@@ -184,15 +187,16 @@ export default class NewJourney extends Component {
                 handlePublicTransportSelect={this.handlePublicTransportSelect}
                 handleCyclingSelect={this.handleCyclingSelect}
               />
-
+              </div>
             </div>
-            </div>
+          </div>    
 
-          </div>
           <div className="eleven wide column">
             <ExtraInformation />
           </div>
+
         </div>
+    
       </div>
     );
   }

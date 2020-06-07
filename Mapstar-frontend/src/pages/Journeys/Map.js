@@ -41,10 +41,6 @@ const MyMapComponent = compose(
   </GoogleMap>
 );
 
-
-
-
-
 export default class Map extends React.PureComponent {
   state = {
     isMarkerShown: false
