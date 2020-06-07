@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Map from './Map.js'
 import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
-import ExtraInformation from './ExtraInformation'
+// import ExtraInformation from './ExtraInformation'
 import Navbar from '../Navbar/Navbar'
 
 const options = ['driving', 'walking', 'bicycling', 'transit']
@@ -27,8 +27,8 @@ export default class NewJourney extends Component {
     this.setState({
       setStartpoint: origin,
       setEndpoint: destination,
-      driving: [],
-      walking: [],
+      driving: null,
+      walking: null,
       bicycling: [],
       transit: [],
       selectedTransportMode: null
@@ -56,27 +56,31 @@ export default class NewJourney extends Component {
   // ************** HANDLE SELECTED JOURNEY METHODS ******************* //
 
   handleDrivingSelect = () => {
-
     this.setState({
       selectedTransportMode: 'DRIVING'
     });
-    fetch("http://localhost:3000/api/v1/journeys", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json", 
-        },
-        body: JSON.stringify({
-          startpoint: this.state.setStartpoint,
-          endpoint: this.state.setEndpoint,
-          duration: this.state.driving.routes[0].legs[0].duration.text,
-          distance: this.state.driving.routes[0].legs[0].distance.text,
-          transit_mode: 'DRIVING',
-          user_id: this.props.user.id
+    // added conditional to protect against crashing when API fails to return route information 
+      if(this.state.driving != null && this.state.driving.routes.length > 0 ) {
+        console.log(this.state.driving)
+        debugger;
+        fetch("http://localhost:3000/api/v1/journeys", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json", 
+          },
+          body: JSON.stringify({
+            startpoint: this.state.setStartpoint,
+            endpoint: this.state.setEndpoint,
+            duration: this.state.driving.routes[0].legs[0].duration.text,
+            distance: this.state.driving.routes[0].legs[0].distance.text,
+            transit_mode: 'DRIVING',
+            user_id: this.props.user.id
+          }
+          )
         }
-        )
-      }
-    )
+      )
+    }
   }
 
   handleWalkingSelect = () => {
@@ -85,7 +89,9 @@ export default class NewJourney extends Component {
     this.setState({
       selectedTransportMode: 'WALKING'
     });
-    fetch("http://localhost:3000/api/v1/journeys", {
+    // added conditional to protect against crashing when API fails to return route information 
+    if(this.state.driving != null && this.state.driving.routes.length > 0){
+      fetch("http://localhost:3000/api/v1/journeys", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -102,6 +108,7 @@ export default class NewJourney extends Component {
         )
       }
     )
+    }
   }
 
   handlePublicTransportSelect = () => {
@@ -110,7 +117,9 @@ export default class NewJourney extends Component {
     this.setState({
       selectedTransportMode: 'TRANSIT'
     });
-    fetch("http://localhost:3000/api/v1/journeys", {
+    // added conditional to protect against crashing when API fails to return route information 
+    if(this.state.driving != null && this.state.driving.routes.length > 0){
+      fetch("http://localhost:3000/api/v1/journeys", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -127,6 +136,7 @@ export default class NewJourney extends Component {
         )
       }
     )
+    }
   }
 
   handleCyclingSelect = () => {
@@ -135,7 +145,9 @@ export default class NewJourney extends Component {
     this.setState({
       selectedTransportMode: 'BICYCLING'
     });
-    fetch("http://localhost:3000/api/v1/journeys", {
+    // added conditional to protect against crashing when API fails to return route information 
+    if(this.driving != null && this.state.driving.route.length > 0){
+      fetch("http://localhost:3000/api/v1/journeys", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -151,7 +163,8 @@ export default class NewJourney extends Component {
         }
         )
       }
-    )
+    ) 
+    }
   }
   //*************END OF HANDLE MODE SELECT METHODS********************//
 
@@ -162,9 +175,6 @@ export default class NewJourney extends Component {
       <div className='ui container'>
 
         {this.props.user && <Navbar user={this.props.user} logout={this.props.logout}/>}
-
-        <br></br>
-        <br></br>
   
         <div className='ui segment celled grid' id='main-div'>
   
@@ -188,12 +198,16 @@ export default class NewJourney extends Component {
                 handleCyclingSelect={this.handleCyclingSelect}
               />
               </div>
+
             </div>
+            
+            <SearchBar handleSubmit={this.handleSubmit}/>
+          
           </div>    
 
-          <div className="eleven wide column">
+          {/* <div className="eleven wide column">
             <ExtraInformation />
-          </div>
+          </div> */}
 
         </div>
     

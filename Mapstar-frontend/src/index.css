@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: white !important;
+  color: rgb(182, 26, 26) !important;
 }
 
 code {
@@ -33,7 +33,7 @@ body > .grid {
 }
 
 .app-container{
-  background-color: #022c44  ;
+  background-color: #005688  ;
   width: 100%;  
   height: 100vh;
 }
@@ -48,11 +48,36 @@ body > .grid {
   border-style: none !important;
 }
 
+.ui.celled.grid {
+  width: 100%;
+  margin: 1em 0;
+  border-style: none !important;
+  box-shadow: none !important;
+}
+
+.ui.celled.grid>.row {
+  width: 100%!important;
+  margin: 0;
+  padding: 0;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.ui.segment { 
+  border-style: none !important;
+  background-color: transparent !important;
+}
+
 .ui {
   display: flex;
   clear: both;
 }
 
+.ui.container {
+  border-style: none !important;
+  width: 90vw !important;
+  height: 78vh !important;
+}
 #info-div{
   overflow: scroll;
   height: 41vh;
