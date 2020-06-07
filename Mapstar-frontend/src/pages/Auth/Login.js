@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
+  BrowserRouter,
+  // Switch,
+  // Route,
+  // Redirect,
   Link,
   useHistory
 } from "react-router-dom";
-import Signup from "./Signup"
+// import Signup from "./Signup";
+import './Login.css';
 
 
 const Login = props => {
