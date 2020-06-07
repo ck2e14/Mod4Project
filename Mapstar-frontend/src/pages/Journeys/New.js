@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import API from "../../adapters/API";
 import Map from './Map.js'
 import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
 import ExtraInformation from './ExtraInformation'
 import Navbar from '../Navbar/Navbar'
+// import API from "../../adapters/API";
 // import { useHistory } from "react-router-dom";
 
 const options = ['driving', 'walking', 'bicycling', 'transit']
@@ -54,10 +54,7 @@ export default class NewJourney extends Component {
     });
   };
 
-
-
-
-// *************************** HANDLE SELECTED JOURNEY METHODS ********************************** //
+  // ************** HANDLE SELECTED JOURNEY METHODS ******************* //
 
   handleDrivingSelect = () => {
 
@@ -157,7 +154,7 @@ export default class NewJourney extends Component {
       }
     )
   }
-  //****************************END OF HANDLE MODE SELECT METHODS******************************//
+  //*************END OF HANDLE MODE SELECT METHODS********************//
 
   render(){
   return (
