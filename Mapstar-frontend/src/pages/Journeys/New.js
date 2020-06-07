@@ -7,13 +7,8 @@ import ExtraInformation from './ExtraInformation'
 import Navbar from '../Navbar/Navbar'
 // import { useHistory } from "react-router-dom";
 
-
-
 const options = ['driving', 'walking', 'bicycling', 'transit']
 
-// fetch(`${''}https://maps.googleapis.com/maps/api/directions/json?origin=${'London'}&destination=${'Bristol'}&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
-//   .then(res => res.json())
-//   .then(thing => console.log(thing))
 export default class NewJourney extends Component {
 
   state = {
@@ -27,7 +22,6 @@ export default class NewJourney extends Component {
     transit: null,
     selectedTransportMode: null,
     // allRoutes: [],
-
     // history: useHistory()
   }
 
@@ -41,7 +35,6 @@ export default class NewJourney extends Component {
       bicycling: [],
       transit: [],
       selectedTransportMode: null
-
       // allRoutes: [],
     })
     // this.setState({allRoutes: []})
@@ -67,8 +60,7 @@ export default class NewJourney extends Component {
 // *************************** HANDLE SELECTED JOURNEY METHODS ********************************** //
 
   handleDrivingSelect = () => {
-    // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
-    // console.log(mode)
+
     this.setState({
       selectedTransportMode: 'DRIVING'
     });
@@ -145,7 +137,7 @@ export default class NewJourney extends Component {
     // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
     // console.log(mode)
     this.setState({
-      selectedTransportMode: 'CYCLING'
+      selectedTransportMode: 'BICYCLING'
     });
     fetch("http://localhost:3000/api/v1/journeys", {
       method: "POST",
@@ -172,19 +164,19 @@ export default class NewJourney extends Component {
     <div>
 
         <div className='ui container'>
-          {this.props.user && <Navbar />}
+          {this.props.user && <Navbar user={this.props.user} logout={this.props.logout}/>}
           <br></br>
           <br></br>
           <SearchBar handleSubmit={this.handleSubmit}/>
-            <div className='ui celled grid'>
-              <div className='ui row'>
+            <div className='ui segment celled grid' id='main-div'>
+              <div className='row'>
 
             <div className="eleven wide column">
               <Map origin={this.state.setStartpoint}
                 destination={this.state.setEndpoint}
                 selectedTransportMode={this.state.selectedTransportMode}/>
             </div>
-            <div className="five wide column">
+            <div className="five wide column" id='info-div'>
               <JourneyInformation
                 driving={this.state.driving}
                 walking={this.state.walking}
@@ -195,15 +187,13 @@ export default class NewJourney extends Component {
                 handlePublicTransportSelect={this.handlePublicTransportSelect}
                 handleCyclingSelect={this.handleCyclingSelect}
               />
-            </div>
-            <div className="ui row">
 
-                <div className="eleven wide column">
-                  <ExtraInformation />
-                </div>
-              </div>
             </div>
-            {this.props.user ? <button onClick={this.props.logout}>Log Out</button> : null}
+            </div>
+
+          </div>
+          <div className="eleven wide column">
+            <ExtraInformation />
           </div>
         </div>
       </div>

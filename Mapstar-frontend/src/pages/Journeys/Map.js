@@ -7,7 +7,7 @@ const MyMapComponent = compose(
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDSDyNUIpUJXlUUkm2LfaG2wCLFVr1MFi4&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />
+  mapElement: <div style={{ height: `100%`}} />
   }),
   withScriptjs,
   withGoogleMap,
@@ -70,6 +70,7 @@ export default class Map extends React.PureComponent {
       <MyMapComponent
         origin={this.props.origin}
         destination={this.props.destination}
+        selectedTransportMode={this.props.selectedTransportMode}
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
       />
