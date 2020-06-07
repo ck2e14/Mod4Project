@@ -1,24 +1,5 @@
-# README
+Collaborative project bringing together nimble AJAX code, Ruby on Rails backend and authentication, effective parsing and clear presentation to create MapStar.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MapStar takes an origin and destination location and returns to you multiple route options for driving, public transport, cycling and so on, plotting waypoints on a map as well as listing directions and duration etc.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Works with GoogleMaps API
