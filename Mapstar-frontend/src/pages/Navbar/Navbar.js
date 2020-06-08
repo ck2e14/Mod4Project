@@ -7,22 +7,21 @@ import { NavLink } from "react-router-dom";
     return(
    <div>
          
-      <NavLink className='navlink'
+      <NavLink className='navlink submit-or-select'
          to='/journeys/new'
          exact
          >
             Plan a New Journey
       </NavLink>
 
-      <NavLink className='navlink'
+      <NavLink className='navlink submit-or-select'
          to='/dashboard'
          exact
          >
             My Saved Journeys
       </NavLink>
-      
-      <img src={Logo} height="120" width="150" align="left"/>
-   {props.user.id ? <button onClick={props.logout}>Log Out</button> : null}
+
+      {props.user.id ? <button className='submit-or-select btn' onClick={props.logout}>Log Out</button> : null}
 
    </div>
 

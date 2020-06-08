@@ -60,24 +60,43 @@ export default class NewJourney extends Component {
     });
     // added conditional to protect against crashing when API fails to return route information 
       if(this.state.driving != null && this.state.driving.routes.length > 0 ) {
-        console.log(this.state.driving)
-        fetch("http://localhost:3000/api/v1/journeys", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json", 
-          },
-          body: JSON.stringify({
-            startpoint: this.state.setStartpoint,
-            endpoint: this.state.setEndpoint,
-            duration: this.state.driving.routes[0].legs[0].duration.text,
-            distance: this.state.driving.routes[0].legs[0].distance.text,
-            transit_mode: 'DRIVING',
-            user_id: this.props.user.id
-          }
+        if(this.props.user) {
+          fetch("http://localhost:3000/api/v1/journeys", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json", 
+              },
+              body: JSON.stringify({
+                startpoint: this.state.setStartpoint,
+                endpoint: this.state.setEndpoint,
+                duration: this.state.driving.routes[0].legs[0].duration.text,
+                distance: this.state.driving.routes[0].legs[0].distance.text,
+                transit_mode: 'DRIVING',
+                user_id: this.props.user.id
+              }
+              )
+            }
+          )
+        } else {
+          fetch("http://localhost:3000/api/v1/journeys", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json", 
+              },
+              body: JSON.stringify({
+                startpoint: this.state.setStartpoint,
+                endpoint: this.state.setEndpoint,
+                duration: this.state.driving.routes[0].legs[0].duration.text,
+                distance: this.state.driving.routes[0].legs[0].distance.text,
+                transit_mode: 'DRIVING',
+                user_id: 'undefined'
+              }
+              )
+            }
           )
         }
-      )
     }
     else {
       alert('No route information obtained. Please try a more specific origin and destination.');  
@@ -92,23 +111,43 @@ export default class NewJourney extends Component {
     });
     // added conditional to protect against crashing when API fails to return route information 
     if(this.state.driving != null && this.state.driving.routes.length > 0){
-      fetch("http://localhost:3000/api/v1/journeys", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          startpoint: this.state.setStartpoint,
-          endpoint: this.state.setEndpoint,
-          duration: this.state.walking.routes[0].legs[0].duration.text,
-          distance: this.state.walking.routes[0].legs[0].distance.text,
-          transit_mode: 'WALKING',
-          user_id: this.props.user.id
-        }
+      if(this.props.user) {
+        fetch("http://localhost:3000/api/v1/journeys", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify({
+              startpoint: this.state.setStartpoint,
+              endpoint: this.state.setEndpoint,
+              duration: this.state.walking.routes[0].legs[0].duration.text,
+              distance: this.state.walking.routes[0].legs[0].distance.text,
+              transit_mode: 'WALKING',
+              user_id: this.props.user.id
+            }
+            )
+          }
+        )
+      } else {
+        fetch("http://localhost:3000/api/v1/journeys", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify({
+              startpoint: this.state.setStartpoint,
+              endpoint: this.state.setEndpoint,
+              duration: this.state.walking.routes[0].legs[0].duration.text,
+              distance: this.state.walking.routes[0].legs[0].distance.text,
+              transit_mode: 'WALKING',
+            }
+            )
+          }
         )
       }
-    )
+     
     }
     else {
       alert('No route information obtained. Please try a more specific origin and destination.');  
@@ -122,8 +161,9 @@ export default class NewJourney extends Component {
       selectedTransportMode: 'TRANSIT'
     });
     // added conditional to protect against crashing when API fails to return route information 
-    if(this.state.driving != null && this.state.driving.routes.length > 0){
-      fetch("http://localhost:3000/api/v1/journeys", {
+    if(this.state.driving != null && this.state.transit.routes.length > 0) {
+      if(this.props.user) {
+        fetch("http://localhost:3000/api/v1/journeys", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -136,10 +176,29 @@ export default class NewJourney extends Component {
           distance: this.state.transit.routes[0].legs[0].distance.text,
           transit_mode: 'TRANSIT',
           user_id: this.props.user.id
+
         }
         )
       }
     )
+      } else {
+        fetch("http://localhost:3000/api/v1/journeys", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          startpoint: this.state.setStartpoint,
+          endpoint: this.state.setEndpoint,
+          duration: this.state.transit.routes[0].legs[0].duration.text,
+          distance: this.state.transit.routes[0].legs[0].distance.text,
+          transit_mode: 'TRANSIT',
+        }
+        )
+      }
+    )
+      }
     }
     else {
       alert('No route information obtained. Please try a more specific origin and destination.');  
@@ -149,31 +208,51 @@ export default class NewJourney extends Component {
   handleCyclingSelect = () => {
     // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
     // console.log(mode)
+    debugger;
     this.setState({
       selectedTransportMode: 'BICYCLING'
     });
     // added conditional to protect against crashing when API fails to return route information 
     if(this.driving != null && this.state.driving.route.length > 0){
-      fetch("http://localhost:3000/api/v1/journeys", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          startpoint: this.state.setStartpoint,
-          endpoint: this.state.setEndpoint,
-          duration: this.state.bicycling.routes[0].legs[0].duration.text,
-          distance: this.state.bicycling.routes[0].legs[0].distance.text,
-          transit_mode: 'BICYLCING',
-          user_id: this.props.user.id
-        }
+      if(this.props.user) {
+        fetch("http://localhost:3000/api/v1/journeys", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify({
+              startpoint: this.state.setStartpoint,
+              endpoint: this.state.setEndpoint,
+              duration: this.state.bicycling.routes[0].legs[0].duration.text,
+              distance: this.state.bicycling.routes[0].legs[0].distance.text,
+              transit_mode: 'BICYLCING',
+              user_id: this.props.user.id
+            }
+            )
+          }
+        )
+      } else {
+        fetch("http://localhost:3000/api/v1/journeys", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify({
+              startpoint: this.state.setStartpoint,
+              endpoint: this.state.setEndpoint,
+              duration: this.state.bicycling.routes[0].legs[0].duration.text,
+              distance: this.state.bicycling.routes[0].legs[0].distance.text,
+              transit_mode: 'BICYLCING',
+            }
+            )
+          }
         )
       }
-    ) 
     }
     else {
-      alert('No route information obtained. Please try a more specific origin and destination.');  
+      alert('No route information obtained. Please try a more specific origin and destination. Cycling directions are in beta.');  
     } 
   }
   //*************END OF HANDLE MODE SELECT METHODS********************//
