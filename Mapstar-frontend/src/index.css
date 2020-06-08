@@ -138,6 +138,9 @@ body > .grid {
   top: 1% !important;
 }
 
+  
+  h2 { font-family: 'Abel', sans-serif !important; color: rgb(65, 65, 65)}
+
 .navlink {
   position: relative;
   margin: 1% 25px 25px;
@@ -179,6 +182,7 @@ body > .grid {
 .remove-line {
   border-style: none !important;
   box-shadow: none !important;
+  margin-top: 5%;
 }
 
 .ui.celled.grid>.row>.column {
@@ -232,7 +236,8 @@ body > .grid {
   display: flex !important;
 }
 
-#saved-journeys {
+#saved-journeys 
+{
   overflow: scroll;
   height: 800px
 }

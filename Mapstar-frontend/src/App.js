@@ -13,7 +13,7 @@ import NewJourney from "./pages/Journeys/New";
 
 function App() {
   const [user, setUser] = useState(null);
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     API.validate()
@@ -58,7 +58,7 @@ function App() {
         </Switch>
 
       </div>
-      
+
       <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet"/>
     </div>
   );
