@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="app-container">
 
-      <div className="App">
+      <div className="app">
 
         <Switch>
         

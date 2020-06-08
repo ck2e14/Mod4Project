@@ -19,22 +19,23 @@ export default class JourneyInformation extends Component {
 
         {this.props.driving ?  <button className='submit-or-select' onClick={() => this.props.handleDrivingSelect ('DRIVING')}>Car</button> : null}
 
-        <br></br>
+        <br/>
         
         {this.props.bicycling ? <button className='submit-or-select' onClick={() => this.props.handleWalkingSelect('WALKING')}>On Foot</button> : null}
         
-        <br></br>
+        <br/>
         
         {this.props.walking ?  <button className='submit-or-select' onClick={() => this.props.handlePublicTransportSelect('TRANSIT')}>Public Tranport</button> : null}
         
-        <br></br>
+        <br/>
         
         {this.props.transit ?  <button className='submit-or-select' onClick={() => this.props.handleCyclingSelect('BICYCLING') }>Cycling</button>: null}
 
-        <br></br>
+        <br/>
       
         <div className='remove-line'>
-          {this.props.driving ? <h2>Driving</h2> : <h1 className='search-to-see'>Search to see details!</h1>}
+          {this.props.hitSubmit ?  null : <h1 className='search-to-see'>Search to see details!</h1> }
+          {this.props.driving ? <h2>Driving</h2> : null}
           {this.props.driving ? this.renderInfoCardsForRoutes(this.props.driving.routes) : null}
         </div>
       

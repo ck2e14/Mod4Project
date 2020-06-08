@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
  const Navbar = (props) => {
     return(
-   <div>
+   <div className='navbar'>
          
       <NavLink className='navlink submit-or-select'
          to='/journeys/new'

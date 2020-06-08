@@ -18,6 +18,7 @@ export default class NewJourney extends Component {
     bicycling: null,
     transit: null,
     selectedTransportMode: null,
+    hitSubmit: false,
     // allRoutes: [],
     // history: useHistory()
   }
@@ -30,17 +31,15 @@ export default class NewJourney extends Component {
       walking: null,
       bicycling: [],
       transit: [],
-      selectedTransportMode: null
+      selectedTransportMode: null,
+      hitSubmit: true,
       // allRoutes: [],
     })
     // this.setState({allRoutes: []})
     options.map((option) => {
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
-
       e.preventDefault()
-      
       this.setState({ allRoutes: [] })
-      
       fetch(`${proxyurl}https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${option}&alternatives=true&key=AIzaSyC46mxowyyPzXCDudxz8BO2YiTJkKs9M9I`)
         .then(res => res.json())
         .then(data => {
@@ -99,7 +98,7 @@ export default class NewJourney extends Component {
         }
     }
     else {
-      alert('No route information obtained. Please try a more specific origin and destination.');  
+      alert('No route information obtained. \nPlease try a more specific origin and destination.');  
     }
   }
 
@@ -110,7 +109,7 @@ export default class NewJourney extends Component {
       selectedTransportMode: 'WALKING'
     });
     // added conditional to protect against crashing when API fails to return route information 
-    if(this.state.driving != null && this.state.driving.routes.length > 0){
+    if(this.state.driving != null && this.state.walking.routes.length > 0){
       if(this.props.user) {
         fetch("http://localhost:3000/api/v1/journeys", {
           method: "POST",
@@ -147,10 +146,9 @@ export default class NewJourney extends Component {
           }
         )
       }
-     
     }
     else {
-      alert('No route information obtained. Please try a more specific origin and destination.');  
+      alert('No route information obtained. \nPlease try a more specific origin and destination.');  
     }
   }
 
@@ -201,14 +199,13 @@ export default class NewJourney extends Component {
       }
     }
     else {
-      alert('No route information obtained. Please try a more specific origin and destination.');  
+      alert('No route information obtained. \nPlease try a more specific origin and destination.');  
     }
   }
 
   handleCyclingSelect = () => {
     // here want to .setState to overwrite the selectedTransportMode: of state, and also POST selected journey information to the API.
     // console.log(mode)
-    debugger;
     this.setState({
       selectedTransportMode: 'BICYCLING'
     });
@@ -252,9 +249,10 @@ export default class NewJourney extends Component {
       }
     }
     else {
-      alert('No route information obtained. Please try a more specific origin and destination. Cycling directions are in beta.');  
+      alert('Cycling directions are in beta. \nPlease try a more specific origin and destination.');  
     } 
   }
+
   //*************END OF HANDLE MODE SELECT METHODS********************//
 
   render(){
@@ -281,26 +279,28 @@ export default class NewJourney extends Component {
                 walking={this.state.walking}
                 bicycling={this.state.bicycling}
                 transit={this.state.transit}
+                selectedMode={this.state.selectedTransportMode}
                 handleDrivingSelect={this.handleDrivingSelect}
                 handleWalkingSelect={this .handleWalkingSelect}
                 handlePublicTransportSelect={this.handlePublicTransportSelect}
                 handleCyclingSelect={this.handleCyclingSelect}
+                hitSubmit={this.state.hitSubmit}
               />
               </div>
 
-            </div>
+          </div>
             
-            <SearchBar handleSubmit={this.handleSubmit}/>
+          <SearchBar handleSubmit={this.handleSubmit}/>
           
-          </div>    
+        </div>    
 
           {/* <div className="eleven wide column">
             <ExtraInformation />
           </div> */}
 
-        </div>
-    
       </div>
+    
+    </div>
     );
   }
 

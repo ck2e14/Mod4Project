@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
-import {
-  BrowserRouter,
-  // Switch,
-  // Route,
-  // Redirect,
-  Link,
-  useHistory
-} from "react-router-dom";
-// import Signup from "./Signup";
+import { Link, useHistory } from "react-router-dom";
 import './Login.css';
-
 
 const Login = props => {
   const [username, setUsername] = useState("");
@@ -29,10 +20,9 @@ const Login = props => {
       .catch(errors => {
         setErrors(errors);
         console.error(errors);
-
-
       });
   };
+  
   return (
     <div className="primary-container">
       <div className="page-login">

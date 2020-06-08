@@ -22,7 +22,9 @@ body {
 
 .eleven.wide.column > div {
   border-style: solid !important;
-  border-radius: 15px !important;
+  border-radius: 20px !important;
+  border-color: rgb(50, 57, 102) !important;
+  border-width: 10px !important;
 
 }
 
@@ -49,9 +51,11 @@ body > .grid {
 }
 
 .app-container {
-  background-color: #659e53  ;
-  width: 100%;  
+  /* background-color: #659e53  ; */
+  background-image: linear-gradient(to left, #75c79a, rgb(71, 133, 102));
+  width: 100vw;  
   height: 100vh;
+  overflow: hidden;
 }
 
 .eleven {
@@ -112,9 +116,11 @@ body > .grid {
   border-style: none !important;
   width: 100vw !important;
   height: 100vh !important;
+  margin-top: 2% !important;
   -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation-delay: .5s !important;
+  padding: 2% !important;
 }
 
 .inputs {
@@ -124,6 +130,7 @@ body > .grid {
   color: white !important;
   padding: 1% !important;
   font-size: 2vw !important;
+  margin-top: 2% !important;
   -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
@@ -135,11 +142,13 @@ body > .grid {
 
 .navbar {
   position: fixed;
-  top: 1% !important;
+  top: -2% !important;
+  width: 40vw !important;
 }
 
-  
-  h2 { font-family: 'Abel', sans-serif !important; color: rgb(65, 65, 65)}
+h2 {
+  font-family: 'Abel', sans-serif !important; color: rgb(65, 65, 65)
+}
 
 .navlink {
   position: relative;
@@ -161,6 +170,7 @@ body > .grid {
   font-size: 1.5vw !important;
   box-shadow: none !important;
   margin-top: 2% !important;
+  font-family: 'Abel', sans-serif !important;
   -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   transition: all .5s ease-in-out
@@ -193,6 +203,7 @@ body > .grid {
 .ui.form {
   border-style: none !important;
   box-shadow: none !important;
+  margin-top: 3% !important;
 }
 
 .ui.form .field>label {
@@ -216,7 +227,7 @@ body > .grid {
   overflow: scroll;
   height: 59vh;
   position: relative;
-  flex: 1 !important;
+  flex: .75 !important;
 }
 
 .ui.celled.grid>.column:not(.row), .ui.celled.grid>.row>.column {
@@ -274,7 +285,7 @@ body > .grid {
 
 .five {
   overflow: auto !important;    
-  flex: 1 !important;
+  flex: .5 !important;
 }
 
 /**
@@ -282,7 +293,6 @@ body > .grid {
 * animation text-focus-in
 * ----------------------------------------
 */
-
 @-webkit-keyframes text-focus-in {
   0% {
     -webkit-filter: blur(12px);
