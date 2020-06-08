@@ -1,15 +1,14 @@
 class Api::V1::JourneysController < ApplicationController
-      def create
-
-           journey = Journey.create(journey_params)
-           user = @current_user
-           journey.update(user: user)
-        if journey.valid?
-           render json: journey
-        else
-           render json: {errors: journey.errors.full_messages}, status: :not_accepted
-        end
+   def create  
+         journey = Journey.create(journey_params)
+         user = @current_user
+         journey.update(user: user)
+      if journey.valid?
+         render json: journey
+      else
+         render json: {errors: journey.errors.full_messages}, status: :not_accepted
       end
+   end
 
    def index
       @journeys = Journey.all
@@ -26,4 +25,5 @@ class Api::V1::JourneysController < ApplicationController
    def journey_params
       params.require(:journey).permit(:startpoint, :endpoint, :duration, :distance, :transit_mode, :user_id)
    end
+   
 end

@@ -23,7 +23,7 @@ body {
 .eleven.wide.column > div {
   border-style: solid !important;
   border-radius: 20px !important;
-  border-color: rgb(50, 57, 102) !important;
+  border-color: rgb(255, 255, 255) !important;
   border-width: 10px !important;
 
 }
@@ -223,7 +223,7 @@ h2 {
   font-weight: 300;
 }
 
-#info-div{
+#info-div {
   overflow: scroll;
   height: 59vh;
   position: relative;
