@@ -9,6 +9,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: rgb(255, 255, 255) !important;
 }
+
+div{
+  border-style: solid !important;
+  border-radius: 10px !important;
+}
+
 .ui.card {
   background-color: transparent !important;
   border-style: none !important;
@@ -17,6 +23,12 @@ body {
 
 .eleven.wide.column {
   flex: 1 !important
+}
+
+.eleven.wide.column+div {
+  display: none !important;
+  border-style: solid !important;
+  border-radius: 10px !important;
 }
 
 code {
@@ -42,7 +54,7 @@ body > .grid {
 }
 
 .app-container{
-  background-color: #005688  ;
+  background-color: #3ab9c2  ;
   width: 100%;  
   height: 100vh;
 }
@@ -51,6 +63,8 @@ body > .grid {
   display: none;
   flex: 2 !important;
   background-color: rgba(0, 255, 255, 0);
+  border-radius: 10px !important;
+  /* opacity: 0.8 !important; */
 }
 
 .eleven.wide.column {
@@ -103,11 +117,105 @@ body > .grid {
   border-style: none !important;
   width: 100vw !important;
   height: 100vh !important;
+  -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation-delay: .5s !important;
+}
+
+.inputs {
+  background: none !important;
+  border-color: none !important;
+  box-shadow: none !important;
+  color: white !important;
+  padding: 1% !important;
+  font-size: 2vw !important;
+  -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.map-wrapper{
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.navbar {
+  position: fixed;
+  top: 1% !important;
+}
+
+.navlink {
+  position: relative;
+  margin: 1% 25px 25px;
+  margin-top: 20vh !important;
+  height: 2vh !important;
+  padding: 1%;
+  color: white;
+  font-size: 1vw;
+  transition: color .5s;
+  font-family: 'Abel', sans-serif !important;
+}
+
+.submit-or-select {
+  background-color: transparent !important;
+  border-style: solid !important; 
+  border-color: rgba(255, 255, 255, 0) !important;
+  color: white !important;
+  font-size: 1.5vw !important;
+  box-shadow: none !important;
+  margin-top: 2% !important;
+  -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  transition: all .5s ease-in-out
+}
+
+.submit-or-select:hover {
+  border-style: solid !important; 
+  border-color: white !important;
+  border-top-color: rgba(255, 255, 255, 0) !important;
+  border-bottom-color: rgba(255, 255, 255, 0) !important;
+  box-shadow: none !important;
+  border-radius: 1px !important;
+}
+
+.ui.form input:not([type]) {
+  border-style: none !important;
+}
+
+.remove-line {
+  border-style: none !important;
+  box-shadow: none !important;
+}
+
+.ui.celled.grid>.row>.column {
+  -webkit-box-shadow: -1px 0 0 0 #d4d4d500 !important;
+  box-shadow: -1px 0 0 0 #d4d4d500 !important;
+}
+
+.ui.form {
+  border-style: none !important;
+  box-shadow: none !important;
+}
+
+.ui.form .field>label {
+  color: rgba(255, 255, 255, 0.87) !important;
+  margin-left: .5vw !important;
+  font-size: 2vw !important;
+  text-transform: none;
+  font-weight: 300 !important;
+  font-family: 'Abel', sans-serif !important;
+  -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.search-to-see {
+  font-family: 'Abel', sans-serif !important;
+  font-size: 4vw;
+  font-weight: 300;
 }
 
 #info-div{
   overflow: scroll;
-  height: 41vh;
+  height: 59vh;
   position: relative;
   flex: 1 !important;
 }
@@ -167,4 +275,34 @@ body > .grid {
 .five {
   overflow: auto !important;    
   flex: 1 !important;
+}
+
+/**
+ * ----------------------------------------
+ * animation text-focus-in
+ * ----------------------------------------
+ */
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
 }

@@ -13,8 +13,6 @@ class SearchBar extends React.Component{
   onDestinationChange = (event) =>{
     this.setState({destination: event.target.value})
   }
-
-
   // onformSubmit = (e) =>{
   //  e.preventDefault()
   //  fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${this.state.origin}&destination=${this.state.destination}&key=IzaSyA4KsBwrhZbB_bnjtmZi1x67YTMMWmtQuU`)
@@ -22,26 +20,35 @@ class SearchBar extends React.Component{
   //     .then(thing => console.log(thing))
   //  this.props.handleSubmit(this.state.origin, this.state.destination)
   // }
-
   render(){
     return(
       <div className='search-bar-ui-segment'>
+
         <form className='ui form' onSubmit={(e) => this.props.handleSubmit(e, this.state.origin, this.state.destination)}>
+        
           <div className='field'>
-            <label>Plan your journey!</label>
-              <input
+        
+            <label className='field-label'>Plan your journey!</label>
+        
+                <input
+                className='inputs'
                 placeholder="Origin"
                 value={this.state.origin}
                 onChange={this.onOriginChange}
                 />
+        
                 <input
+                className='inputs'
                   placeholder="Destination"
                   value={this.state.destination}
                   onChange={this.onDestinationChange}
-                  />
-                <input type="submit" />
+                />
+
+              <input className='submit-or-select' type="submit" />
           </div>
+
         </form>
+
       </div>
     )
   }

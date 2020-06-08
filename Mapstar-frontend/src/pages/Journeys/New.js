@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Map from './Map.js'
 import SearchBar from './SearchBar.js'
 import JourneyInformation from './JourneyInformation.js'
-// import ExtraInformation from './ExtraInformation'
 import Navbar from '../Navbar/Navbar'
 
 const options = ['driving', 'walking', 'bicycling', 'transit']
@@ -185,7 +184,7 @@ export default class NewJourney extends Component {
 
       <div className='ui container'>
 
-        {this.props.user && <Navbar user={this.props.user} logout={this.props.logout}/>}
+        {this.props.user && <Navbar className='navbar' user={this.props.user} logout={this.props.logout}/>}
   
         <div className='ui segment celled grid' id='main-div'>
   

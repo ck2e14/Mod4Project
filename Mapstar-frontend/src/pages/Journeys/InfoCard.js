@@ -12,8 +12,8 @@ const Card = props => {
         Distance: {information.distance.text} <br />
         Duration: {information.duration.text}
       </p>
-      <button>See More</button>
-      <button>Start Journey</button>
+      {/* <button>See More</button> */}
+      {/* <button>Start Journey</button> */}
     </div>
   )
 

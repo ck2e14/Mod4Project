@@ -10,7 +10,7 @@ export class MapContainer extends Component {
      height: '100vh'
    }
     return (
-      <div style={style}>
+      <div className='map-wrapper' style={style}>
         <Map
           google={this.props.google}
         />
